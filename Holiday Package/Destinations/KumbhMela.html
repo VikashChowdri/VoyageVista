@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kumbh Mela Packages | Trip Planner</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="./KumbhMelaStyle.css">
+
+</head>
+<body>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Kumbh Mela 2025 - Special Packages</h1>
+        <p>Experience the world's largest spiritual gathering with our carefully curated Kumbh Mela packages. Join millions of pilgrims for this once-in-a-lifetime sacred journey in Prayagraj.</p>
+        <button class="hero-button">Explore Packages</button>
+    </section>
+
+    <main>
+        <!-- Packages Section -->
+        <section class="section" id="section">
+            <div class="section-header">
+                <h2>Kumbh Mela Packages</h2>
+                <p>Select from our range of spiritual journeys to the sacred Kumbh Mela</p>
+            </div>
+            <div class="packages-container">
+                <!-- Package 1 -->
+                <div class="package-card">
+                    <div class="package-image">
+                        <span class="badge">Most Popular</span>
+                        <img src="./destination_images/KumbhMela.jpg" alt="Kumbh Mela Basic Package">
+                    </div>
+                    <div class="package-details">
+                        <h3 class="package-title">Kumbh Mela Essential Experience</h3>
+                        <p class="package-description">A 3-day spiritual journey to experience the essence of Kumbh Mela with comfortable accommodations and guided tours.</p>
+                        <div class="package-features">
+                            <div class="feature">
+                                <i class="fas fa-calendar-alt"></i>
+                                <span>3 Days</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-bed"></i>
+                                <span>Standard Tent</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-utensils"></i>
+                                <span>All Meals</span>
+                            </div>
+                        </div>
+                        <div class="price-row">
+                            <div>
+                                <div class="price">₹12,999</div>
+                                <div class="price-note">per person</div>
+                            </div>
+                            <button class="book-button" onclick="redirectToPage(23)">Book Now</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Package 2 -->
+                <div class="package-card">
+                    <div class="package-image">
+                        <span class="badge">Premium</span>
+                        <img src="./destination_images/KumbhMela.jpg" alt="Kumbh Mela Deluxe Package">
+                    </div>
+                    <div class="package-details">
+                        <h3 class="package-title">Kumbh Mela Premium Retreat</h3>
+                        <p class="package-description">A 5-day premium experience with luxury tent accommodations, private guides, and exclusive access to rituals.</p>
+                        <div class="package-features">
+                            <div class="feature">
+                                <i class="fas fa-calendar-alt"></i>
+                                <span>5 Days</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-bed"></i>
+                                <span>Luxury Tent</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-utensils"></i>
+                                <span>All Meals</span>
+                            </div>
+                        </div>
+                        <div class="price-row">
+                            <div>
+                                <div class="price">₹24,999</div>
+                                <div class="price-note">per person</div>
+                            </div>
+                            <button class="book-button" onclick="redirectToPage(24)">Book Now</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Package 3 -->
+                <div class="package-card" id="section">
+                    <div class="package-image">
+                        <span class="badge">Family</span>
+                        <img src="./destination_images/KumbhMela.jpg" alt="Kumbh Mela Family Package">
+                    </div>
+                    <div class="package-details">
+                        <h3 class="package-title">Kumbh Mela Family Package</h3>
+                        <p class="package-description">A 4-day family-friendly package with spacious accommodations and activities suitable for all age groups.</p>
+                        <div class="package-features">
+                            <div class="feature">
+                                <i class="fas fa-calendar-alt"></i>
+                                <span>4 Days</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-bed"></i>
+                                <span>Family Tent</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-utensils"></i>
+                                <span>All Meals</span>
+                            </div>
+                        </div>
+                        <div class="price-row">
+                            <div>
+                                <div class="price">₹39,999</div>
+                                <div class="price-note">for family of 4</div>
+                            </div>
+                            <button class="book-button" onclick="redirectToPage(24)">Book Now</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Package 4 -->
+                <div class="package-card">
+                    <div class="package-image">
+                        <span class="badge">Budget</span>
+                        <img src="./destination_images/KumbhMela.jpg" alt="Kumbh Mela Day Tour">
+                    </div>
+                    <div class="package-details">
+                        <h3 class="package-title">Kumbh Mela Day Tour</h3>
+                        <p class="package-description">A full day guided tour of Kumbh Mela with transportation from Varanasi or Prayagraj city center.</p>
+                        <div class="package-features">
+                            <div class="feature">
+                                <i class="fas fa-calendar-alt"></i>
+                                <span>1 Day</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-bus"></i>
+                                <span>Transport</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-utensils"></i>
+                                <span>Lunch</span>
+                            </div>
+                        </div>
+                        <div class="price-row">
+                            <div>
+                                <div class="price">₹4,999</div>
+                                <div class="price-note">per person</div>
+                            </div>
+                            <button class="book-button" onclick="redirectToPage(25)">Book Now</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Package 5 -->
+                <div class="package-card">
+                    <div class="package-image">
+                        <span class="badge">Special</span>
+                        <img src="./destination_images/KumbhMela.jpg" alt="Kumbh Mela Special Bathing Days">
+                    </div>
+                    <div class="package-details">
+                        <h3 class="package-title">Royal Bath (Shahi Snan) Special</h3>
+                        <p class="package-description">Experience the most auspicious bathing days with special arrangements and guided spiritual activities.</p>
+                        <div class="package-features">
+                            <div class="feature">
+                                <i class="fas fa-calendar-alt"></i>
+                                <span>3 Days</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-bed"></i>
+                                <span>Deluxe Tent</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-utensils"></i>
+                                <span>All Meals</span>
+                            </div>
+                        </div>
+                        <div class="price-row">
+                            <div>
+                                <div class="price">₹19,999</div>
+                                <div class="price-note">per person</div>
+                            </div>
+                            <button class="book-button" onclick="redirectToPage(26)">Book Now</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Package 6 -->
+                <div class="package-card">
+                    <div class="package-image">
+                        <span class="badge">Luxury</span>
+                        <img src="./destination_images/KumbhMela.jpg" alt="Kumbh Mela VIP Package">
+                    </div>
+                    <div class="package-details">
+                        <h3 class="package-title">Kumbh Mela Ultimate VIP Experience</h3>
+                        <p class="package-description">A 7-day luxury experience with premium accommodations, private ceremonies, and helicopter tours of the Kumbh Mela.</p>
+                        <div class="package-features">
+                            <div class="feature">
+                                <i class="fas fa-calendar-alt"></i>
+                                <span>7 Days</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-bed"></i>
+                                <span>VIP Suite</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-utensils"></i>
+                                <span>Gourmet Meals</span>
+                            </div>
+                        </div>
+                        <div class="price-row">
+                            <div>
+                                <div class="price">₹99,999</div>
+                                <div class="price-note">per person</div>
+                            </div>
+                            <button class="book-button" onclick="redirectToPage(27)">Book Now</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Highlights Section -->
+        <section class="section">
+            <div class="section-header">
+                <h2>Kumbh Mela Highlights</h2>
+                <p>What makes our Kumbh Mela packages special</p>
+            </div>
+            
+            <div class="highlight-card">
+                <div class="highlight-title">
+                    <i class="fas fa-om"></i>
+                    <h3>Spiritual Significance</h3>
+                </div>
+                <p>The Kumbh Mela is considered one of the most sacred pilgrimages in Hinduism. According to Hindu mythology, drops of the nectar of immortality (amrit) fell at four places where the Kumbh Mela is held: Prayagraj, Haridwar, Ujjain, and Nashik. Our packages include guidance on the spiritual significance and mythology behind this grand event.</p>
+            </div>
+            
+            <div class="highlight-card">
+                <div class="highlight-title">
+                    <i class="fas fa-water"></i>
+                    <h3>Royal Bathing (Shahi Snan)</h3>
+                </div>
+                <p>Experience the most auspicious bathing days when millions gather to take a dip in the sacred waters at the confluence of the Ganges, Yamuna, and mythical Saraswati rivers. Our packages are timed to coincide with these special occasions, with dedicated viewing areas and guidance.</p>
+            </div>
+            
+            <div class="highlight-card">
+                <div class="highlight-title">
+                    <i class="fas fa-users"></i>
+                    <h3>Sadhu Darshan</h3>
+                </div>
+                <p>Meet the holy men and women of India who gather at the Kumbh Mela. Many sadhus belong to ancient akharas (Hindu monastic orders) and only appear in public during the Kumbh. Our guides will help you navigate these interactions with respect and understanding.</p>
+            </div>
+            
+            <div class="highlight-card">
+                <div class="highlight-title">
+                    <i class="fas fa-home"></i>
+                    <h3>Comfortable Accommodations</h3>
+                </div>
+                <p>Stay in well-appointed tents or luxury accommodations based on your package selection. All our accommodations include clean bathrooms, comfortable bedding, electricity, and security to ensure your stay is comfortable despite the massive gathering.</p>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="section">
+            <div class="section-header">
+                <h2>Frequently Asked Questions</h2>
+                <p>Common questions about our Kumbh Mela packages</p>
+            </div>
+            
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        When is the next Kumbh Mela in Prayagraj?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        The next Kumbh Mela in Prayagraj (Allahabad) is scheduled for 2025. The exact dates will be determined based on astrological calculations and will be announced closer to the event.
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        What is included in the packages?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        Our packages typically include accommodation, meals, guided tours of the Kumbh Mela grounds, attendance at key ceremonies, transportation from designated pickup points, and assistance from experienced guides throughout your stay. Specific inclusions vary by package.
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        How crowded will it be during Kumbh Mela?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        The Kumbh Mela is the world's largest gathering of people. Millions of pilgrims attend, especially on the main bathing days. Our packages are designed to provide comfortable experiences despite the crowds, with strategic accommodations and guided navigation through the festival.
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Is the Kumbh Mela suitable for foreign tourists?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        Yes, the Kumbh Mela welcomes visitors from all over the world. Our packages include English-speaking guides familiar with addressing the needs and questions of international visitors. We provide cultural context and ensure you have a respectful and enriching experience.
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        What should I pack for Kumbh Mela?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        We recommend packing modest clothing (shoulders and knees covered), comfortable walking shoes, a hat, sunscreen, insect repellent, any required medications, a water bottle, and a small bag for daily excursions. A detailed packing list will be provided upon booking.
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-container">
+            <!-- Quick Links Section -->
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="../ExplorePage.html"><i class="fas fa-globe"></i>Explore</a></li>
+                </ul>
+            </div>
+    
+            <!-- Popular Destinations Section -->
+            <div class="footer-section">
+                <h3>Popular Destinations</h3>
+                <ul class="footer-links">
+                    <li><a href="./Kerala.html"><i class="fas fa-umbrella-beach"></i> Kerala</a></li>
+                    <li><a href="./Goa.html"><i class="fas fa-cocktail"></i> Goa</a></li>
+                    <li><a href="./Maldives.html"><i class="fas fa-water"></i> Maldives</a></li>
+                    <li><a href="./Europe.html"><i class="fas fa-landmark"></i> Europe</a></li>
+                </ul>
+            </div>
+    
+            <!-- Contact Information -->
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <ul class="footer-contact">
+                    <li><i class="fas fa-phone"></i> +91 9373216209</li>
+                    <li><i class="fas fa-envelope"></i> info@voyagevista.com</li>
+                    <li><i class="fas fa-map-marker-alt"></i> Amrtitanagar PO,Amrita Vishwa Vidyapeetham<br>
+                        Ettimadal , Coimbatore,Tamil Nadu-641112<br>
+                        INDIA</li>
+                </ul>
+            </div>
+
+        </div>
+    
+        <!-- Back to Top Button -->
+        <a href="#" class="back-to-top"><i class="fas fa-arrow-up"></i></a>
+    </footer>
+
+    <script>
+        // Simple script to toggle FAQ answers
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling;
+                const icon = question.querySelector('i');
+                
+                if (answer.style.display === 'block') {
+                    answer.style.display = 'none';
+                    icon.classList.remove('fa-chevron-up');
+                    icon.classList.add('fa-chevron-down');
+                } else {
+                    answer.style.display = 'block';
+                    icon.classList.remove('fa-chevron-down');
+                    icon.classList.add('fa-chevron-up');
+                }
+            });
+        });
+    </script>
+
+    <script>
+        function redirectToPage(index) {
+            
+            localStorage.setItem('selectedIndex', index);
+
+            window.location.href = './Booking.html';
+        }
+    </script>
+</body>
+</html>

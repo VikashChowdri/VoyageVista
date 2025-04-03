@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maldives</title>
+    <link rel="stylesheet" href="./packageCard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+
+</head>
+<body>
+    <div class="main">
+    <div class="package-card">
+        <div class="image-container">
+            <img src="./destination_images/Maldives1.avif" alt="Holiday Inn Resort Kandooma - Perfect Island Getaway">
+            <div class="package-badge">ISLAND GETAWAY</div>
+            <div class="price-alert">Crafted Just for You</div>
+        </div>
+        
+        <div class="content">
+            <div class="title-section">
+                <h2 class="package-title">Holiday Inn Resort Kandooma - Perfect Island Getaway</h2>
+                <div class="days-tag">4N/5D</div>
+            </div>
+            
+            <h3 class="destination">4N Maldives</h3>
+            
+            <div class="features">
+                <div class="feature-item">Round Trip Flights</div>
+                <div class="feature-item">4 Star Hotel</div>
+                <div class="feature-item">Airport Transfers</div>
+                <div class="feature-item">Selected Meals</div>
+            </div>
+            
+            <div class="highlights">
+                <h4 class="highlight-title">Experience Highlights</h4>
+                <div class="highlight-item">Relax on pristine beaches</div>
+                <div class="highlight-item">Snorkeling in crystal-clear waters</div>
+                <div class="highlight-item">Sunset cruises</div>
+            </div>
+            
+            <div class="pricing">
+                <div class="price-per-person">
+                    <span class="price-label">Price Per Person</span>
+                    <span class="price-value">₹1,30,361</span>
+                </div>
+                <div class="total-price">
+                    <span class="price-label">Total Price (2 Persons)</span>
+                    <span class="price-value">₹2,60,722</span>
+                </div>
+            </div>
+            
+            <button class="book-now" onclick="redirectToPage(9)">Book Now</button>
+        </div>
+    </div>
+
+
+
+    <div class="package-card">
+        <div class="image-container">
+            <img src="./destination_images/Maldives2.avif" alt="Centara Ras Maldives - Refreshing Maldives Trip">
+            <div class="package-badge">REFRESHING TRIP</div>
+            <div class="price-alert">Limited Time Offer</div>
+        </div>
+        
+        <div class="content">
+            <div class="title-section">
+                <h2 class="package-title">Centara Ras Maldives - Refreshing Maldives Trip</h2>
+                <div class="days-tag">4N/5D</div>
+            </div>
+            
+            <h3 class="destination">4N Maldives</h3>
+            
+            <div class="features">
+                <div class="feature-item">Round Trip Flights</div>
+                <div class="feature-item">4 Star Hotel</div>
+                <div class="feature-item">3 Activities</div>
+                <div class="feature-item">Selected Meals</div>
+            </div>
+            
+            <div class="highlights">
+                <h4 class="highlight-title">Experience Highlights</h4>
+                <div class="highlight-item">Speedboat Transfer</div>
+                <div class="highlight-item">Non-motorized Water Sports</div>
+            </div>
+            
+            <div class="pricing">
+                <div class="price-per-person">
+                    <span class="price-label">Price Per Person</span>
+                    <span class="price-value">₹1,23,285</span>
+                </div>
+                <div class="total-price">
+                    <span class="price-label">Total Price (2 Persons)</span>
+                    <span class="price-value">₹2,46,570</span>
+                </div>
+            </div>
+            
+            <button class="book-now" onclick="redirectToPage(10)">Book Now</button>
+        </div>
+    </div>
+    </div>
+
+    <br>
+    <footer class="site-footer">
+        <div class="footer-container">
+            <!-- Quick Links Section -->
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="../ExplorePage.html"><i class="fas fa-globe"></i>Explore</a></li>
+                </ul>
+            </div>
+    
+            <!-- Popular Destinations Section -->
+            <div class="footer-section">
+                <h3>Popular Destinations</h3>
+                <ul class="footer-links">
+                    <li><a href="./Kerala.html"><i class="fas fa-umbrella-beach"></i> Kerala</a></li>
+                    <li><a href="./Goa.html"><i class="fas fa-cocktail"></i> Goa</a></li>
+                    <li><a href="./Maldives.html"><i class="fas fa-water"></i> Maldives</a></li>
+                    <li><a href="./Europe.html"><i class="fas fa-landmark"></i> Europe</a></li>
+                </ul>
+            </div>
+    
+            <!-- Contact Information -->
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <ul class="footer-contact">
+                    <li><i class="fas fa-phone"></i> +91 9373216209</li>
+                    <li><i class="fas fa-envelope"></i> info@voyagevista.com</li>
+                    <li><i class="fas fa-map-marker-alt"></i> Amrtitanagar PO,Amrita Vishwa Vidyapeetham<br>
+                        Ettimadal , Coimbatore,Tamil Nadu-641112<br>
+                        INDIA</li>
+                </ul>
+            </div>
+
+        </div>
+    
+        <!-- Back to Top Button -->
+        <a href="#" class="back-to-top"><i class="fas fa-arrow-up"></i></a>
+    </footer>
+
+
+    <script>
+        function redirectToPage(index) {
+            
+            localStorage.setItem('selectedIndex', index);
+
+            window.location.href = './Booking.html';
+        }
+    </script>
+</body>
+</html>

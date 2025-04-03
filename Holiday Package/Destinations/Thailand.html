@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thailand</title>
+    <link rel="stylesheet" href="./packageCard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    
+</head>
+<body>
+    <div class="main">
+
+        <div class="package-card">
+            <div class="image-container">
+                <img src="./destination_images/Thailand1.avif" alt="Breathtaking Pattaya & Bangkok">
+                <div class="package-badge">SPECIALLY CURATED FOR YOU</div>
+                <div class="price-alert">Specially Curated For You</div>
+            </div>
+            
+            <div class="content">
+                <div class="title-section">
+                    <h2 class="package-title">Breathtaking Pattaya & Bangkok <span class="premium-tag">3★</span></h2>
+                    <div class="days-tag">4N/5D</div>
+                </div>
+                
+                <h3 class="destination">2N Pattaya | 2N Bangkok</h3>
+                
+                <div class="features">
+                    <div class="feature-item">Round Trip Flights</div>
+                    <div class="feature-item">3 Star Hotels</div>
+                    <div class="feature-item">Airport Transfers</div>
+                    <div class="feature-item">3 Activities</div>
+                    <div class="feature-item">Selected Meals</div>
+                </div>
+                
+                <div class="highlights">
+                    <h4 class="highlight-title">Experience Highlights</h4>
+                    <div class="highlight-item">Coral Island</div>
+                    <div class="highlight-item">Tour Manager</div>
+                    <div class="highlight-item">Inter City Transfer</div>
+                </div>
+                
+                <div class="pricing">
+                    <div class="price-per-person">
+                        <span class="price-label">Price Per Person</span>
+                        <span class="price-value">₹50,008</span>
+                    </div>
+                    <div class="total-price">
+                        <span class="price-label">Total Price (2 Persons)</span>
+                        <span class="price-value">₹1,00,016</span>
+                    </div>
+                </div>
+                <a href=""></a>
+                <button class="book-now" onclick="redirectToPage(13)">Book Now</button>
+            </div>
+        </div>
+
+
+        <div class="package-card">
+            <div class="image-container">
+                <img src="./destination_images/Thailand2.avif" alt="The Amazing Islands of Thailand">
+                <div class="package-badge">CRAFTED JUST FOR YOU</div>
+                <div class="price-alert">Crafted Just for You</div>
+            </div>
+            
+            <div class="content">
+                <div class="title-section">
+                    <h2 class="package-title">The Amazing Islands of Thailand <span class="premium-tag">4★</span></h2>
+                    <div class="days-tag">7N/8D</div>
+                </div>
+                
+                <h3 class="destination">2N Krabi | 3N Phuket | 2N Bangkok</h3>
+                
+                <div class="features">
+                    <div class="feature-item">Round Trip Flights</div>
+                    <div class="feature-item">Intercity Flight Transfer</div>
+                    <div class="feature-item">4 Star Hotels</div>
+                    <div class="feature-item">Airport Transfers</div>
+                    <div class="feature-item">6 Activities</div>
+                    <div class="feature-item">Selected Meals</div>
+                </div>
+                
+                <div class="highlights">
+                    <h4 class="highlight-title">Experience Highlights</h4>
+                    <div class="highlight-item">Poda Islands Tour</div>
+                    <div class="highlight-item">Phi Phi Island Tour</div>
+                    <div class="highlight-item">City Tour & Dolphins Bay</div>
+                </div>
+                
+                <div class="pricing">
+                    <div class="price-per-person">
+                        <span class="price-label">Price Per Person</span>
+                        <span class="price-value">₹87,527</span>
+                    </div>
+                    <div class="total-price">
+                        <span class="price-label">Total Price (2 Persons)</span>
+                        <span class="price-value">₹1,75,054</span>
+                    </div>
+                </div>
+                <a href=""></a>
+                <button class="book-now" onclick="redirectToPage(14)">Book
+
+            </div>
+        </div>
+    </div>
+
+
+    <br>
+
+    <footer class="site-footer">
+        <div class="footer-container">
+            <!-- Quick Links Section -->
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="../ExplorePage.html"><i class="fas fa-globe"></i>Explore</a></li>
+                </ul>
+            </div>
+    
+            <!-- Popular Destinations Section -->
+            <div class="footer-section">
+                <h3>Popular Destinations</h3>
+                <ul class="footer-links">
+                    <li><a href="./Kerala.html"><i class="fas fa-umbrella-beach"></i> Kerala</a></li>
+                    <li><a href="./Goa.html"><i class="fas fa-cocktail"></i> Goa</a></li>
+                    <li><a href="./Maldives.html"><i class="fas fa-water"></i> Maldives</a></li>
+                    <li><a href="./Europe.html"><i class="fas fa-landmark"></i> Europe</a></li>
+                </ul>
+            </div>
+    
+            <!-- Contact Information -->
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <ul class="footer-contact">
+                    <li><i class="fas fa-phone"></i> +91 9373216209</li>
+                    <li><i class="fas fa-envelope"></i> info@voyagevista.com</li>
+                    <li><i class="fas fa-map-marker-alt"></i> Amrtitanagar PO,Amrita Vishwa Vidyapeetham<br>
+                        Ettimadal , Coimbatore,Tamil Nadu-641112<br>
+                        INDIA</li>
+                </ul>
+            </div>
+
+        </div>
+    
+        <!-- Back to Top Button -->
+        <a href="#" class="back-to-top"><i class="fas fa-arrow-up"></i></a>
+    </footer>
+
+    <script>
+        function redirectToPage(index) {
+            
+            localStorage.setItem('selectedIndex', index);
+
+            window.location.href = './Booking.html';
+        }
+    </script>
+</body>
+</html>

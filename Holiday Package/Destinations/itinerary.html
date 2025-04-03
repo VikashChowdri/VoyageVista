@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./itineraryStyle.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+<div class="container"> 
+    <button id="generate-btn">Generate Trip Plan</button>
+
+<div class="spinner" id="loading-spinner"></div>
+
+<div class="error" id="error-message"></div>
+
+<div class="trip-plan" id="trip-plan-section">
+    <h2 id="trip-plan-title">Your Trip Plan</h2>
+    <div class="trip-content" id="trip-content"></div>
+</div>
+</div>
+<br>
+<footer class="site-footer">
+    <div class="footer-container">
+        <!-- Quick Links Section -->
+        <div class="footer-section">
+            <h3>Quick Links</h3>
+            <ul class="footer-links">
+                <li><a href="../ExplorePage.html"><i class="fas fa-globe"></i>Explore</a></li>
+            </ul>
+        </div>
+
+        <!-- Popular Destinations Section -->
+        <div class="footer-section">
+            <h3>Popular Destinations</h3>
+            <ul class="footer-links">
+                <li><a href="./Kerala.html"><i class="fas fa-umbrella-beach"></i> Kerala</a></li>
+                <li><a href="./Goa.html"><i class="fas fa-cocktail"></i> Goa</a></li>
+                <li><a href="./Maldives.html"><i class="fas fa-water"></i> Maldives</a></li>
+                <li><a href="./Europe.html"><i class="fas fa-landmark"></i> Europe</a></li>
+            </ul>
+        </div>
+
+        <!-- Contact Information -->
+        <div class="footer-section">
+            <h3>Contact Us</h3>
+            <ul class="footer-contact">
+                <li><i class="fas fa-phone"></i> +91 9373216209</li>
+                <li><i class="fas fa-envelope"></i> info@voyagevista.com</li>
+                <li><i class="fas fa-map-marker-alt"></i> Amrtitanagar PO,Amrita Vishwa Vidyapeetham<br>
+                Ettimadal , Coimbatore,Tamil Nadu-641112<br>
+                INDIA</li>
+            </ul>
+        </div>
+
+    </div>
+
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top"><i class="fas fa-arrow-up"></i></a>
+</footer>
+
+<script>
+
+const errorMessage = document.getElementById('error-message');
+const tripPlanSection = document.getElementById('trip-plan-section');
+const tripPlanTitle = document.getElementById('trip-plan-title');
+const tripContent = document.getElementById('trip-content');
+const generateBtn = document.getElementById('generate-btn');
+const loadingSpinner = document.getElementById('loading-spinner');
+
+
+let packageDetails = localStorage.getItem("packageDetails");
+// Embedded API key and model selection
+const API_KEY = "";
+const SELECTED_MODEL = "gemini-1.5-pro";
+
+// Generate trip plan
+
+
+generateBtn.addEventListener('click', async () => {
+    loadingSpinner.style.display = 'block';
+    errorMessage.style.display = 'none';
+    tripPlanSection.style.display = 'none';
+    
+    try {
+        const prompt = generatePrompt();
+        const response = await fetchGeminiResponse(prompt);
+        displayTripPlan(response);
+    } catch (error) {
+        showError(error.message || 'An error occurred while generating your trip plan');
+        console.error("Full error:", error);
+    } finally {
+        loadingSpinner.style.display = 'none';
+    }
+});
+
+
+function generatePrompt() {
+    let prompt = `create an itenerary using this package details ${packageDetails}`
+    
+    prompt += `\n\nPlease include:
+1. Day-by-day itinerary with morning, afternoon, and evening activities
+2. Accommodations for the package
+3. Transportation tips within the destination
+4. Must-try local food and restaurants
+5. Estimated costs for major expenses
+6. Packing suggestions based on typical weather
+7. Cultural etiquette tips
+
+Format the itinerary in a clean, organized way with proper headings and sections.`;
+
+    return prompt;
+}
+
+// Function to fetch response from Gemini API
+async function fetchGeminiResponse(prompt) {
+    // API endpoint with key as query parameter
+    const url = `https://generativelanguage.googleapis.com/v1/models/${SELECTED_MODEL}:generateContent?key=${API_KEY}`;
+    
+    const requestBody = {
+        contents: [
+            {
+                parts: [
+                    { text: prompt }
+                ]
+            }
+        ],
+        generationConfig: {
+            temperature: 0.7,
+            maxOutputTokens: 4096
+        }
+    };
+    
+    const response = await fetch(url, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(requestBody)
+    });
+    
+    if (!response.ok) {
+        const errorData = await response.json().catch(() => ({}));
+        const errorMessage = errorData.error?.message || `API Error (${response.status}): ${response.statusText}`;
+        throw new Error(errorMessage);
+    }
+    
+    const data = await response.json();
+    return data;
+}
+
+// Function to display trip plan
+function displayTripPlan(response) {
+    try {
+        // Extract the response text from the API response
+        let tripPlanContent = "";
+        
+        if (response.candidates && response.candidates.length > 0 && 
+            response.candidates[0].content && 
+            response.candidates[0].content.parts && 
+            response.candidates[0].content.parts.length > 0) {
+            
+            tripPlanContent = response.candidates[0].content.parts[0].text;
+        } else if (response.promptFeedback && response.promptFeedback.blockReason) {
+            tripPlanContent = `Content blocked: ${response.promptFeedback.blockReason}`;
+        } else {
+            tripPlanContent = "No content found in response. Please try again with different parameters.";
+            console.log("Full API response:", response);
+        }
+        
+        // Display the trip plan
+        tripContent.innerHTML = formatTripPlan(tripPlanContent);
+        tripPlanSection.style.display = 'block';
+        
+        // Scroll to trip plan
+        tripPlanSection.scrollIntoView({ behavior: 'smooth' });
+    } catch (error) {
+        showError('Failed to parse trip plan');
+        console.error('Response parsing error:', error);
+        console.error('Raw response:', response);
+    }
+}
+
+// Format trip plan with basic markdown-like conversion
+function formatTripPlan(text) {
+    // Convert markdown-style formatting to HTML
+    let formatted = text
+        // Headers
+        .replace(/^# (.*$)/gm, '<h2>$1</h2>')
+        .replace(/^## (.*$)/gm, '<h3>$1</h3>')
+        .replace(/^### (.*$)/gm, '<h4>$1</h4>')
+        // Bold
+        .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+        // Italic
+        .replace(/\*(.*?)\*/g, '<em>$1</em>')
+        // Lists
+        .replace(/^\s*[-*+]\s+(.*$)/gm, '<li>$1</li>')
+        // Convert consecutive list items to proper lists
+        .replace(/(<li>.*<\/li>)\s*\n/g, '<ul>$1</ul>');
+    
+    // Add spacing between paragraphs
+    formatted = formatted.replace(/\n\n/g, '<br><br>');
+    
+    return formatted;
+}
+
+// Function to show error message
+function showError(message) {
+    errorMessage.textContent = message;
+    errorMessage.style.display = 'block';
+    loadingSpinner.style.display = 'none';
+}
+</script>
+    
+</body>
+</html>

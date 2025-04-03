@@ -1,0 +1,673 @@
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Confirmation</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="./confirmStyle.css">
+</head>
+<body>
+
+<div class="confirm-cont">   
+    <div class="confirmation-card">
+        <div class="header">
+            <div class="logo">T</div>
+            <h1>Booking Confirmation</h1>
+            <p id="package-title">Package Name</p>
+        </div>
+        
+        <div class="content">
+            <div class="confirmation-message">
+                <div class="checkmark">✓</div>
+                <h2>Payment Successful!</h2>
+                <p>Thank you for your booking. A confirmation has been sent to your email address.</p>
+            </div>
+            
+            <div class="booking-details">
+                <h3>Booking Information</h3>
+                <div class="details-container">
+                    <div class="detail-row">
+                        <span class="detail-label">Package</span>
+                        <span class="detail-value" id="package-name">Package Name</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Duration</span>
+                        <span class="detail-value" id="package-duration">Duration</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Travelers</span>
+                        <span class="detail-value" id="traveler-count">Traveler Count</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Travel Date</span>
+                        <span class="detail-value" id="travel-date">Travel Date</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Itinerary</span>
+                        <span class="detail-value" id="package-itinerary">Itinerary</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="payment-details">
+                <h3>Payment Details</h3>
+                <div class="details-container">
+                    <div class="detail-row">
+                        <span class="detail-label">Base Price</span>
+                        <span class="detail-value" id="base-price">₹0</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Taxes & Fees</span>
+                        <span class="detail-value" id="taxes-fees">₹0</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label" id="additional-label-1">Additional Item</span>
+                        <span class="detail-value" id="additional-value-1">₹0</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label" id="discount-label">Discount</span>
+                        <span class="detail-value" id="discount-value">-₹0</span>
+                    </div>
+                </div>
+                
+                <div class="payment-total">
+                    <span class="payment-total-label">Total Paid</span>
+                    <span class="payment-total-value" id="total-paid">₹0</span>
+                </div>
+                
+                <div class="important-note" id="payment-note">
+                    Important: Your payment has been processed and is non-refundable. Please review our cancellation policy for more details.
+                </div>
+            </div>
+            
+            <div class="actions">
+                <button class="button primary-button" id="view-itinerary" onclick="generateItinerary()">View Itinerary</button>
+            </div>
+            
+            <div class="confirmation-id">
+                Booking ID: <span id="booking-id">XXXX-XXXX-XXXX</span> | Transaction ID: <span id="transaction-id">XXXXXXXXXXXXXXXX</span>
+            </div>
+            
+            <div class="contact-info">
+                Need assistance? Contact us at <strong>support@yourcompany.com</strong> or call <strong>+91 XXXXXXXXXX</strong>
+            </div>
+        </div>
+    </div>
+
+    </div>
+
+    <br>
+
+    <footer class="site-footer">
+        <div class="footer-container">
+            <!-- Quick Links Section -->
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="../ExplorePage.html"><i class="fas fa-globe"></i>Explore</a></li>
+                </ul>
+            </div>
+    
+            <!-- Popular Destinations Section -->
+            <div class="footer-section">
+                <h3>Popular Destinations</h3>
+                <ul class="footer-links">
+                    <li><a href="./Kerala.html"><i class="fas fa-umbrella-beach"></i> Kerala</a></li>
+                    <li><a href="./Goa.html"><i class="fas fa-cocktail"></i> Goa</a></li>
+                    <li><a href="./Maldives.html"><i class="fas fa-water"></i> Maldives</a></li>
+                    <li><a href="./Europe.html"><i class="fas fa-landmark"></i> Europe</a></li>
+                </ul>
+            </div>
+    
+            <!-- Contact Information -->
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <ul class="footer-contact">
+                    <li><i class="fas fa-phone"></i> +91 9373216209</li>
+                    <li><i class="fas fa-envelope"></i> info@voyagevista.com</li>
+                    <li><i class="fas fa-map-marker-alt"></i> Amrtitanagar PO,Amrita Vishwa Vidyapeetham<br>
+                        Ettimadal , Coimbatore,Tamil Nadu-641112<br>
+                        INDIA</li>
+                </ul>
+            </div>
+
+        </div>
+    
+        <!-- Back to Top Button -->
+        <a href="#" class="back-to-top"><i class="fas fa-arrow-up"></i></a>
+    </footer>
+
+
+    <script>
+        // This JavaScript would be used to dynamically populate the template
+        // with the specific package details when the page loads
+        // document.addEventListener('DOMContentLoaded', function() {
+            // Example function to populate the template with package data
+
+
+            function populateTemplate(packageData) {
+
+
+                // Basic info
+                document.getElementById('package-title').textContent = packageData.name;
+                document.getElementById('package-name').textContent = packageData.name + (packageData.stars ? (' (' + packageData.stars + '★)') : '');
+                document.getElementById('package-duration').textContent = packageData.duration;
+                // document.getElementById('traveler-count').textContent = packageData.travelers;
+                document.getElementById('traveler-count').textContent = adultCount +" adult";
+
+
+
+                document.getElementById('travel-date').textContent = packageData.travelDate;
+                document.getElementById('package-itinerary').textContent = packageData.itinerary;
+                
+                // Payment details
+                document.getElementById('base-price').textContent = '₹' + (packageData.basePrice*adultCount).toFixed(2).toLocaleString();
+                // document.getElementById('taxes-fees').textContent = '₹' + packageData.taxesFees.toLocaleString();
+                document.getElementById('taxes-fees').textContent = '₹' + (((packageData.basePrice)*0.05)*adultCount).toFixed(2).toLocaleString();
+
+                
+
+                // Additional item (can be insurance, activities, etc.)
+                document.getElementById('additional-label-1').textContent = packageData.additionalLabel;
+                document.getElementById('additional-value-1').textContent = '₹' + (((packageData.basePrice)*0.025)*adultCount).toFixed(2).toLocaleString();
+                
+                // Discount if applicable
+                document.getElementById('discount-label').textContent = packageData.discountLabel;
+                document.getElementById('discount-value').textContent = '-₹' +  (((packageData.basePrice)*0.03)*adultCount).toFixed(2).toLocaleString();
+                
+                // Total
+                totalPaid = (packageData.basePrice) + ((packageData.basePrice)*0.05) +  ((packageData.basePrice)*0.025) - ((packageData.basePrice)*0.03)
+                document.getElementById('total-paid').textContent = '₹' + (totalPaid*adultCount).toFixed(2).toLocaleString();
+
+                
+                // IDs
+                document.getElementById('booking-id').textContent = packageData.bookingId;
+                document.getElementById('transaction-id').textContent = packageData.transactionId;
+                
+                // Optional: Custom payment note
+                if (packageData.paymentNote) {
+                    document.getElementById('payment-note').textContent = packageData.paymentNote;
+                }
+            }
+            
+            // Sample data - this would be replaced with actual package data
+            const samplePackage = [
+            {
+            name: "Kerala Magic Package",
+                stars: "3",
+                duration: "3 Nights / 4 Days",
+                travelers: "2 Adults",
+                travelDate: "April 15, 2025",
+                itinerary: "2N Munnar | 1N Alleppey",
+                basePrice: 35790,
+                additionalLabel: "Travel Insurance",
+                discountLabel: "Discount Applied",
+                bookingId: "BK-25478693",
+                transactionId: "TXN20250315634891",
+                paymentNote: "Important: Your payment has been processed. Cancellations made 30 days prior to arrival are eligible for a partial refund.",
+                page:"Kerala.html"
+        },
+        {
+                name: "Premium Kerala Vacay",
+                stars: "5",
+                duration: "4 Nights / 5 Days",
+                travelers: "2 Adults",
+                travelDate: "April 15, 2025",
+                itinerary: "2N Munnar | 1N Thekkady | 1N Alleppey",
+                basePrice: 41350,               
+                additionalLabel: "Travel Insurance",                
+                discountLabel: "Discount Applied",
+                bookingId: "BK-25478693",
+                transactionId: "TXN20250315634891",
+                paymentNote: "Important: Your payment has been processed. Cancellations made 30 days prior to arrival are eligible for a partial refund.",
+                page:"Kerala.html"
+            },
+
+            {
+                name: "Kerala Paradise - Freebie Inside!",
+                stars: "5",
+                duration: "6 Nights / 7 Days",
+                travelers: "2 Adults",
+                travelDate: "April 15, 2025",
+                itinerary: "2N Munnar | 1N Thekkady | 2N Kovalam and Poovar | 1N Alleppey",
+                basePrice: 55342,               
+                additionalLabel: "Travel Insurance",
+                discountLabel: "Discount Applied",                
+                bookingId: "BK-25478693",
+                transactionId: "TXN20250315634891",
+                paymentNote: "Important: Your payment has been processed. Cancellations made 30 days prior to arrival are eligible for a partial refund.",
+                page:"Kerala.html"
+            },
+            {
+            name: "Most Wanted Goa Package",
+            stars: "3",
+            duration: "4 Nights / 5 Days",
+            travelers: "2 Adults",
+            travelDate: "June 1, 2025",
+            itinerary: "4N Goa",
+            basePrice: 19756,          
+            additionalLabel: "Travel Insurance",         
+            discountLabel: "Seasonal Discount",       
+            bookingId: "BK-45678932",
+            transactionId: "TXN20250315891234",
+            paymentNote: "Important: Your payment has been processed. Cancellations made 20 days prior to arrival are eligible for a partial refund.",
+            page:"Goa.html"
+        },
+             {
+                name: "Goa Bliss - Sea, Sand & Serenity",
+                stars: "4",
+                duration: "3 Nights / 4 Days",
+                travelers: "2 Adults",
+                travelDate: "May 10, 2025",
+                itinerary: "3N Goa",
+                basePrice: 20355,
+                additionalLabel: "Travel Insurance",
+                discountLabel: "Early Bird Discount",
+                bookingId: "BK-35478921",
+                transactionId: "TXN20250315789123",
+                paymentNote: "Important: Your payment has been processed. Cancellations made 15 days prior to arrival are eligible for a partial refund.",
+                page:"Goa.html"
+             },
+
+
+             {
+    name: "Most Wanted Kashmir Package",
+    stars: "3",
+    duration: "6 Nights / 7 Days",
+    travelers: "2 Adults",
+    travelDate: "May 20, 2025",
+    itinerary: "1N Srinagar Houseboat | 1N Gulmarg | 2N Pahalgam | 2N Srinagar",
+    basePrice: 56335,
+    additionalLabel: "Flight Discount",
+    discountLabel: "Discount Applied",
+    bookingId: "BK-78945612",
+    transactionId: "TXN20250315987456",
+    paymentNote: "Important: Your payment has been processed. Cancellations made 30 days prior to arrival are eligible for a partial refund.",
+    page: "Kashmir.html"
+},
+
+             {
+    name: "Stunning Kashmir - Book Now Pay Later",
+    stars: "3",
+    duration: "5 Nights / 6 Days",
+    travelers: "2 Adults",
+    travelDate: "June 10, 2025",
+    itinerary: "1N Srinagar Houseboat | 1N Gulmarg | 2N Pahalgam | 1N Srinagar",
+    basePrice: 28644,
+    additionalLabel: "No Cost EMI",
+    discountLabel: "Discount Applied",
+    bookingId: "BK-65412378",
+    transactionId: "TXN20250315874563",
+    paymentNote: "Important: Your payment has been processed. Cancellations made 30 days prior to arrival are eligible for a partial refund.",
+    page: "Kashmir.html"
+},
+
+{
+    name: "Weekend Getaway to Jaipur",
+    stars: "3",
+    duration: "2 Nights / 3 Days",
+    travelers: "2 Adults",
+    travelDate: "July 5, 2025",
+    itinerary: "2N Jaipur",
+    basePrice: 9826,
+    additionalLabel: "Limited Time Offer",
+    discountLabel: "Discount Applied",
+    bookingId: "BK-12345678",
+    transactionId: "TXN20250315123456",
+    paymentNote: "Important: Your payment has been processed. Cancellations made 15 days prior to arrival are eligible for a partial refund.",
+    page: "Rajasthan.html"
+},
+
+{
+    name: "Celestial Honeymoon in Jaisalmer",
+    stars: "3",
+    duration: "8 Nights / 9 Days",
+    travelers: "2 Adults",
+    travelDate: "August 15, 2025",
+    itinerary: "2N Jaipur | 1N Bikaner | 2N Jaisalmer | 1N Jodhpur | 2N Udaipur",
+    basePrice: 42045,
+    additionalLabel: "Limited Time Offer",
+    discountLabel: "Discount Applied",
+    bookingId: "BK-87654321",
+    transactionId: "TXN20250315876543",
+    paymentNote: "Important: Your payment has been processed. Cancellations made 30 days prior to arrival are eligible for a partial refund.",
+    page: "Rajashan.html"
+},
+
+{
+    name: "Holiday Inn Resort Kandooma - Perfect Island Getaway",
+    stars: "4",
+    duration: "4 Nights / 5 Days",
+    travelers: "2 Adults",
+    travelDate: "September 10, 2025",
+    itinerary: "4N Maldives",
+    basePrice: 130361,
+    additionalLabel: "Crafted Just for You",
+    discountLabel: "Discount Applied",
+    bookingId: "BK-98765432",
+    transactionId: "TXN20250315987654",
+    paymentNote: "Important: Your payment has been processed. Cancellations made 30 days prior to arrival are eligible for a partial refund.",
+    page: "Maldives.html"
+},
+
+
+{
+    name: "Centara Ras Maldives - Refreshing Maldives Trip",
+    stars: "4",
+    duration: "4 Nights / 5 Days",
+    travelers: "2 Adults",
+    travelDate: "October 15, 2025",
+    itinerary: "4N Maldives",
+    basePrice: 123285,
+    additionalLabel: "Limited Time Offer",
+    discountLabel: "Discount Applied",
+    bookingId: "BK-11223344",
+    transactionId: "TXN20250315112233",
+    paymentNote: "Important: Your payment has been processed. Cancellations made 30 days prior to arrival are eligible for a partial refund.",
+    page: "Maldives.html"
+},
+
+{
+    "name": "Himachal Retreat",
+    "stars": "4",
+    "duration": "5 Nights / 6 Days",
+    "travelers": "2 Adults",
+    "travelDate": "April 15, 2025",
+    "itinerary": "2N Shimla | 3N Manali",
+    "basePrice": 18257,
+    "additionalLabel": "Travel Insurance",
+    "discountLabel": "Discount Applied",
+    "bookingId": "BK-25478694",
+    "transactionId": "TXN20250315634892",
+    "paymentNote": "Important: Your payment has been processed. Cancellations made 30 days prior to arrival are eligible for a partial refund.",
+    "page": "Himachal.html"
+},
+
+{
+    "name": "Memorable Himachal Package",
+    "stars": "3",
+    "duration": "5 Nights / 6 Days",
+    "travelers": "2 Adults",
+    "travelDate": "April 15, 2025",
+    "itinerary": "3N Manali | 2N Shimla",
+    "basePrice": 22450,
+    "additionalLabel": "Travel Insurance",
+    "discountLabel": "Discount Applied",
+    "bookingId": "BK-25478695",
+    "transactionId": "TXN20250315634893",
+    "paymentNote": "Important: Your payment has been processed. Cancellations made 30 days prior to arrival are eligible for a partial refund.",
+    "page": "Himachal.html"
+},
+
+{
+    "name": "Breathtaking Pattaya & Bangkok",
+    "stars": "3",
+    "duration": "4 Nights / 5 Days",
+    "travelers": "2 Adults",
+    "travelDate": "April 15, 2025",
+    "itinerary": "2N Pattaya | 2N Bangkok",
+    "basePrice": 50008,
+    "additionalLabel": "Travel Insurance",
+    "discountLabel": "Discount Applied",
+    "bookingId": "BK-25478696",
+    "transactionId": "TXN20250315634894",
+    "paymentNote": "Important: Your payment has been processed. Cancellations made 30 days prior to arrival are eligible for a partial refund.",
+    "page": "Thailand.html"
+},
+
+{
+    "name": "The Amazing Islands of Thailand",
+    "stars": "4",
+    "duration": "7 Nights / 8 Days",
+    "travelers": "2 Adults",
+    "travelDate": "April 15, 2025",
+    "itinerary": "2N Krabi | 3N Phuket | 2N Bangkok",
+    "basePrice": 87527,
+    "additionalLabel": "Travel Insurance",
+    "discountLabel": "Discount Applied",
+    "bookingId": "BK-25478697",
+    "transactionId": "TXN20250315634895",
+    "paymentNote": "Important: Your payment has been processed. Cancellations made 30 days prior to arrival are eligible for a partial refund.",
+    "page": "Thailand.html"
+},
+
+{
+    "name": "Highlights of Europe Group Departure Summer 2025",
+    "stars": "4",
+    "duration": "12 Nights / 13 Days",
+    "travelers": "2 Adults",
+    "travelDate": "June 1, 2025",
+    "itinerary": "3N Paris | 2N Engelberg | 1N Zurich | 2N Vienna | 2N Prague | +1 More",
+    "basePrice": 332315,
+    "additionalLabel": "Visa Assistance",
+    "discountLabel": "No Cost EMI",
+    "bookingId": "BK-25478698",
+    "transactionId": "TXN20250315634896",
+    "paymentNote": "Important: Your payment has been processed. Cancellations made 60 days prior to arrival are eligible for a partial refund.",
+    "page": "Europe.html"
+},
+
+{
+    "name": "Budget Swiss Paris Group Departure Summer 2025",
+    "stars": "3",
+    "duration": "5 Nights / 6 Days",
+    "travelers": "2 Adults",
+    "travelDate": "June 1, 2025",
+    "itinerary": "3N Zurich | 2N Paris",
+    "basePrice": 140336,
+    "additionalLabel": "Visa Assistance",
+    "discountLabel": "Cancellation Offer",
+    "bookingId": "BK-25478699",
+    "transactionId": "TXN20250315634897",
+    "paymentNote": "Important: Your payment has been processed. Cancellations made 60 days prior to arrival are eligible for a partial refund.",
+    "page": "Europe.html"
+},
+{
+    "name": "Bali Super Saver",
+    "stars": "3",
+    "duration": "5 Nights / 6 Days",
+    "travelers": "2 Adults",
+    "travelDate": "April 15, 2025",
+    "itinerary": "5N Bali",
+    "basePrice": 61131,
+    "additionalLabel": "Visa",
+    "discountLabel": "Exclusive Offers",
+    "bookingId": "BK-25478700",
+    "transactionId": "TXN20250315634898",
+    "paymentNote": "Important: Your payment has been processed. Cancellations made 30 days prior to arrival are eligible for a partial refund.",
+    "page": "Bali.html"
+},
+{
+    "name": "Bali Premium Package (Inclusive Flights)",
+    "stars": "5",
+    "duration": "6 Nights / 7 Days",
+    "travelers": "2 Adults",
+    "travelDate": "April 15, 2025",
+    "itinerary": "4N Kuta | 2N Ubud",
+    "basePrice": 93067,
+    "additionalLabel": "Visa",
+    "discountLabel": "Exclusive Offers",
+    "bookingId": "BK-25478701",
+    "transactionId": "TXN20250315634899",
+    "paymentNote": "Important: Your payment has been processed. Cancellations made 30 days prior to arrival are eligible for a partial refund.",
+    "page": "Bali.html"
+},
+{
+    "name": "Dubai Adventures",
+    "stars": "3",
+    "duration": "4 Nights / 5 Days",
+    "travelers": "2 Adults",
+    "travelDate": "April 15, 2025",
+    "itinerary": "4N Dubai",
+    "basePrice": 70983,
+    "additionalLabel": "Visa",
+    "discountLabel": "Flight Discount",
+    "bookingId": "BK-25478702",
+    "transactionId": "TXN20250315634900",
+    "paymentNote": "Important: Your payment has been processed. Cancellations made 30 days prior to arrival are eligible for a partial refund.",
+    "page": "Dubai.html"
+},
+
+{
+    "name": "Dubai Beyond Usual",
+    "stars": "3",
+    "duration": "5 Nights / 6 Days",
+    "travelers": "2 Adults",
+    "travelDate": "April 15, 2025",
+    "itinerary": "5N Dubai",
+    "basePrice": 124484,
+    "additionalLabel": "Visa",
+    "discountLabel": "Flight Discount",
+    "bookingId": "BK-25478703",
+    "transactionId": "TXN20250315634901",
+    "paymentNote": "Important: Your payment has been processed. Cancellations made 30 days prior to arrival are eligible for a partial refund.",
+    "page": "Dubai.html"
+},
+
+{
+    "name": "Vibrant Vietnam",
+    "stars": "4",
+    "duration": "8 Nights / 9 Days",
+    "travelers": "2 Adults",
+    "travelDate": "April 15, 2025",
+    "itinerary": "3N Hanoi | 3N Da Nang | 2N Ho Chi Minh City",
+    "basePrice": 66479,
+    "additionalLabel": "Travel Insurance",
+    "discountLabel": "Discount Applied",
+    "bookingId": "BK-25478704",
+    "transactionId": "TXN20250315634902",
+    "paymentNote": "Important: Your payment has been processed. Cancellations made 30 days prior to arrival are eligible for a partial refund.",
+    "page": "Vietnam.html"
+},
+
+{
+    "name": "Luxury Week in Vietnam",
+    "stars": "5",
+    "duration": "7 Nights / 8 Days",
+    "travelers": "2 Adults",
+    "travelDate": "April 15, 2025",
+    "itinerary": "3N Hanoi | 1N Da Nang | 1N Hoi An | 2N Ho Chi Minh City",
+    "basePrice": 27783,
+    "additionalLabel": "Travel Insurance",
+    "discountLabel": "Discount Applied",
+    "bookingId": "BK-25478705",
+    "transactionId": "TXN20250315634903",
+    "paymentNote": "Important: Your payment has been processed. Cancellations made 30 days prior to arrival are eligible for a partial refund.",
+    "page": "Vietnam.html"
+},
+    {
+        "name": "Kumbh Mela Essential Experience",
+        "stars": "3",
+        "duration": "3 Days",
+        "travelers": "1 Person",
+        "travelDate": "Flexible Dates",
+        "itinerary": "Guided tours | Spiritual activities",
+        "basePrice": 12999,
+        "additionalLabel": "All Meals Included",
+        "discountLabel": "Early Bird Discount Available",
+        "bookingId": "BK-KUMBH1001",
+        "transactionId": "TXN-KUMBH20250001",
+        "paymentNote": "Important: Your payment has been processed. Cancellations made 15 days prior to arrival are eligible for a partial refund.",
+        "page": "Kumbh1.html"
+    },
+    {
+        "name": "Kumbh Mela Premium Retreat",
+        "stars": "4",
+        "duration": "5 Days",
+        "travelers": "1 Person",
+        "travelDate": "Flexible Dates",
+        "itinerary": "Private guides | Exclusive rituals",
+        "basePrice": 24999,
+        "additionalLabel": "Luxury Accommodation",
+        "discountLabel": "Group Discount Available",
+        "bookingId": "BK-KUMBH1002",
+        "transactionId": "TXN-KUMBH20250002",
+        "paymentNote": "Important: Your payment has been processed. Cancellations made 20 days prior to arrival are eligible for a partial refund.",
+        "page": "Kumbh2.html"
+    },
+    {
+        "name": "Kumbh Mela Family Package",
+        "stars": "3",
+        "duration": "4 Days",
+        "travelers": "4 Persons",
+        "travelDate": "Flexible Dates",
+        "itinerary": "Family-friendly activities | Group tours",
+        "basePrice": 39999,
+        "additionalLabel": "Spacious Family Tent",
+        "discountLabel": "Child Discount Available",
+        "bookingId": "BK-KUMBH1003",
+        "transactionId": "TXN-KUMBH20250003",
+        "paymentNote": "Important: Your payment has been processed. Cancellations made 25 days prior to arrival are eligible for a partial refund.",
+        "page": "Kumbh3.html"
+    },
+    {
+        "name": "Kumbh Mela Day Tour",
+        "stars": "3",
+        "duration": "1 Day",
+        "travelers": "1 Person",
+        "travelDate": "Flexible Dates",
+        "itinerary": "Guided tour | Transportation included",
+        "basePrice": 4999,
+        "additionalLabel": "Lunch Included",
+        "discountLabel": "Group Discount Available",
+        "bookingId": "BK-KUMBH1004",
+        "transactionId": "TXN-KUMBH20250004",
+        "paymentNote": "Important: Your payment has been processed. No refunds for cancellations within 48 hours of tour.",
+        "page": "Kumbh4.html"
+    },
+    {
+        "name": "Royal Bath (Shahi Snan) Special",
+        "stars": "4",
+        "duration": "3 Days",
+        "travelers": "1 Person",
+        "travelDate": "Special Dates Only",
+        "itinerary": "Auspicious bathing days | Spiritual activities",
+        "basePrice": 19999,
+        "additionalLabel": "Special Arrangements",
+        "discountLabel": "Early Bird Discount Available",
+        "bookingId": "BK-KUMBH1005",
+        "transactionId": "TXN-KUMBH20250005",
+        "paymentNote": "Important: Your payment has been processed. No refunds for Shahi Snan dates.",
+        "page": "Kumbh5.html"
+    },
+    {
+        "name": "Kumbh Mela Ultimate VIP Experience",
+        "stars": "5",
+        "duration": "7 Days",
+        "travelers": "1 Person",
+        "travelDate": "Flexible Dates",
+        "itinerary": "Private ceremonies | Helicopter tours",
+        "basePrice": 99999,
+        "additionalLabel": "Gourmet Meals Included",
+        "discountLabel": "VIP Exclusive Offer",
+        "bookingId": "BK-KUMBH1006",
+        "transactionId": "TXN-KUMBH20250006",
+        "paymentNote": "Important: Your payment has been processed. Cancellations made 45 days prior to arrival are eligible for a partial refund.",
+        "page": "Kumbh6.html"
+    }
+       ];
+
+            let index = localStorage.getItem('selectedIndex');
+            let adultCount = localStorage.getItem('adultCount');
+
+            populateTemplate(samplePackage[index]);
+
+            
+        // });
+    </script>
+    <script>
+         function generateItinerary(){
+
+                name=samplePackage[index].name;
+                duration= samplePackage[index].duration;
+                itinerary=samplePackage[index].itinerary;
+                basePrice=samplePackage[index].basePrice;
+
+                localStorage.setItem("packageDetails",`${name},${duration},${itinerary},${basePrice}`);
+                window.location.href='./itinerary.html';
+                
+            }
+    </script>
+</body>
+</html>

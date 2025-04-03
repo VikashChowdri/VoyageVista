@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete Your Booking</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="./BookingStyle.css">
+</head>
+<body>
+    <div class="booking-container">
+        <div class="booking-form">
+            <h2>Traveler Information</h2>
+            <div class="form-group">
+                <label for="full-name">Full Name</label>
+                <input type="text" id="full-name" placeholder="As per passport">
+            </div>
+            
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" placeholder="Your email">
+            </div>
+            
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" placeholder="+91">
+            </div>
+            
+            <div class="input-row">
+                <div class="form-group">
+                    <label for="travelers">Travelers</label>
+                    <select id="travelers">
+                        <option value="1">1 Adult</option>
+                        <option value="2" selected>2 Adults</option>
+                        <option value="3">3 Adults</option>
+                        <option value="4">4 Adults</option>
+                        <!-- <option value="family">Family</option> -->
+                    </select>
+                </div>
+                <!-- <div class="form-group">
+                    <label for="travel-date">Travel Date</label>
+                    <input type="date" id="travel-date">
+                </div> -->
+            </div>
+            
+            <h2 style="margin-top: 30px;">Payment Method</h2>
+
+
+            <div class="payment-methods">
+                <label class="payment-option">
+                    <input type="radio" name="payment" id="credit-card" checked>
+                    <i class="fas fa-credit-card payment-icon"></i>
+                    <span class="payment-label">Credit/Debit Card</span>
+                </label>
+                
+                <label class="payment-option">
+                    <input type="radio" name="payment" id="netbanking">
+                    <i class="fas fa-university payment-icon"></i>
+                    <span class="payment-label">Net Banking</span>
+                </label>
+                
+                <label class="payment-option">
+                    <input type="radio" name="payment" id="upi">
+                    <i class="fas fa-mobile-alt payment-icon"></i>
+                    <span class="payment-label">UPI Payment</span>
+                </label>
+                
+                <label class="payment-option">
+                    <input type="radio" name="payment" id="wallet">
+                    <i class="fas fa-wallet payment-icon"></i>
+                    <span class="payment-label">Wallet</span>
+                </label>
+            </div>
+            
+            <button class="book-button" id="confirm-booking">Confirm & Pay</button>
+            <button class="book-button" id="confirm-booking" style="background-color: rgb(218, 44, 44);" onclick="goBack()">Cancel Payment</button>
+        </div>
+    </div>
+
+    <script>
+        // This would be populated with data from the previous page
+        document.addEventListener('DOMContentLoaded', function() {
+
+            // Handle booking confirmation
+            document.getElementById('confirm-booking').addEventListener('click', function() {
+                // Validate form
+                const fullName = document.getElementById('full-name').value;
+                const email = document.getElementById('email').value;
+                const phone = document.getElementById('phone').value;
+                
+                if (!fullName || !email || !phone) {
+                    alert('Please fill in all required fields');
+                    return;
+                }
+
+                // let index = localStorage.getItem('selectedIndex');
+
+
+                adultCount =  document.getElementById('travelers').value;
+                localStorage.setItem('adultCount',adultCount);
+
+                window.location.href = 'confirm.html';
+            });
+        });
+
+        function goBack(){
+            window.history.back();
+        }
+    </script>
+
+</body>
+</html>
