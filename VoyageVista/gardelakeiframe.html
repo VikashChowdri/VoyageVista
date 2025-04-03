@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lake Garda, Italy</title>
+    <style>
+        :root {
+            --primary: #2a5ca7;
+            --secondary: #e74c3c;
+            --light: #f8f9fa;
+            --dark: #343a40;
+            --accent: #f39c12;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f5f5;
+        }
+        
+        .garda-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .hero {
+            position: relative;
+            height: 400px;
+            overflow: hidden;
+            background: linear-gradient(135deg, #1e5799 0%,#207cca 51%,#2989d8 100%);
+        }
+        
+        .hero-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .hero:hover .hero-image {
+            transform: scale(1.05);
+        }
+        
+        .hero-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.7));
+            padding: 30px;
+            color: white;
+        }
+        
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .content-section {
+            padding: 30px;
+        }
+        
+        h2 {
+            color: var(--primary);
+            margin: 25px 0 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary);
+            font-size: 2rem;
+        }
+        
+        h3 {
+            color: var(--secondary);
+            margin: 20px 0 10px;
+            font-size: 1.5rem;
+        }
+        
+        p {
+            margin-bottom: 15px;
+        }
+        
+        ul {
+            margin-bottom: 20px;
+            padding-left: 20px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+            position: relative;
+        }
+        
+        li:before {
+            content: "•";
+            color: var(--accent);
+            font-weight: bold;
+            display: inline-block; 
+            width: 1em;
+            margin-left: -1em;
+        }
+        
+        .image-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+            margin: 25px 0;
+        }
+        
+        .gallery-item {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            height: 180px;
+            background-color: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        }
+        
+        .gallery-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .travel-tip {
+            background-color: #f0f7ff;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 5px solid var(--primary);
+            margin: 30px 0;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .tip-icon {
+            font-size: 2rem;
+            color: var(--accent);
+            margin-right: 15px;
+        }
+        
+        .transport-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .transport-card {
+            flex: 1 1 200px;
+            background: white;
+            border-radius: 8px;
+            padding: 15px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .transport-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .transport-icon {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 30px auto;
+        }
+        
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 3px;
+            background-color: var(--primary);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -1.5px;
+        }
+        
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+        }
+        
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: white;
+            border: 3px solid var(--primary);
+            border-radius: 50%;
+            top: 15px;
+            z-index: 1;
+        }
+        
+        .left {
+            left: 0;
+            text-align: right;
+        }
+        
+        .right {
+            left: 50%;
+            text-align: left;
+        }
+        
+        .left::after {
+            right: -13px;
+        }
+        
+        .right::after {
+            left: -13px;
+        }
+        
+        .timeline-content {
+            padding: 15px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .timeline-date {
+            font-weight: bold;
+            color: var(--primary);
+        }
+        
+        @media screen and (max-width: 768px) {
+            .hero {
+                height: 300px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .timeline::after {
+                left: 31px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            
+            .timeline-item::after {
+                left: 21px;
+            }
+            
+            .left, .right {
+                left: 0;
+                text-align: left;
+            }
+        }
+        
+        /* Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .animated {
+            animation: fadeIn 0.8s ease forwards;
+        }
+        
+        .delay-1 { animation-delay: 0.2s; }
+        .delay-2 { animation-delay: 0.4s; }
+        .delay-3 { animation-delay: 0.6s; }
+        
+        /* Fallback for images */
+        .image-fallback {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #e0e0e0;
+            color: #666;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="garda-container">
+        <div class="hero">
+            <picture>
+                <source srcset="https://images.pexels.com/photos/572897/pexels-photo-572897.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" type="image/jpeg">
+                <img src="https://images.pexels.com/photos/572897/pexels-photo-572897.jpeg" alt="Lake Garda panoramic view" class="hero-image" onerror="this.parentElement.innerHTML='<div class=\'image-fallback\'>Lake Garda Panorama</div>'">
+            </picture>
+            <div class="hero-overlay">
+                <h1>Lake Garda, Italy</h1>
+                <p class="subtitle">Italy's Largest Lake - A Blend of Natural Beauty and Rich History</p>
+            </div>
+        </div>
+        
+        <div class="content-section">
+            <section class="animated">
+                <h2>History of Lake Garda</h2>
+                <p>Lake Garda (Lago di Garda) is the largest lake in Italy, formed during the last Ice Age about 10,000 years ago. This stunning body of water has played a significant role in Italian history and culture.</p>
+                
+                <div class="timeline">
+                    <div class="timeline-item left animated delay-1">
+                        <div class="timeline-content">
+                            <div class="timeline-date">Prehistoric Times</div>
+                            <p>Evidence of pile-dwelling settlements from the Bronze Age (1800-1200 BC) have been found along the shores.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item right animated delay-1">
+                        <div class="timeline-content">
+                            <div class="timeline-date">Roman Era (1st-5th century)</div>
+                            <p>The lake was called "Benacus" and served as an important trade route between northern Europe and Rome.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item left animated delay-2">
+                        <div class="timeline-content">
+                            <div class="timeline-date">Middle Ages (6th-14th century)</div>
+                            <p>Numerous castles were built around the lake by rival city-states and families like the Scaligeri.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item right animated delay-2">
+                        <div class="timeline-content">
+                            <div class="timeline-date">Renaissance (15th-16th century)</div>
+                            <p>Became a cultural center under Venetian rule, with beautiful villas constructed along the shores.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item left animated delay-3">
+                        <div class="timeline-content">
+                            <div class="timeline-date">19th Century</div>
+                            <p>Developed as a tourist destination for European aristocracy and artists seeking inspiration.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item right animated delay-3">
+                        <div class="timeline-content">
+                            <div class="timeline-date">Modern Era</div>
+                            <p>One of Italy's most popular tourist destinations, attracting millions of visitors annually.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="image-gallery">
+                    <div class="gallery-item">
+                        <picture>
+                            <source srcset="https://images.pexels.com/photos/2386318/pexels-photo-2386318.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" type="image/jpeg">
+                            <img src="https://images.pexels.com/photos/2386318/pexels-photo-2386318.jpeg" alt="Castle on Lake Garda" class="gallery-image" onerror="this.parentElement.innerHTML='<div class=\'image-fallback\'>Garda Castle</div>'">
+                        </picture>
+                    </div>
+                    <div class="gallery-item">
+                        <picture>
+                            <source srcset="https://images.pexels.com/photos/1118332/pexels-photo-1118332.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" type="image/jpeg">
+                            <img src="https://images.pexels.com/photos/1118332/pexels-photo-1118332.jpeg" alt="Garda Town" class="gallery-image" onerror="this.parentElement.innerHTML='<div class=\'image-fallback\'>Garda Town</div>'">
+                        </picture>
+                    </div>
+                    <div class="gallery-item">
+                        <picture>
+                            <source srcset="https://images.pexels.com/photos/572897/pexels-photo-572897.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" type="image/jpeg">
+                            <img src="https://images.pexels.com/photos/572897/pexels-photo-572897.jpeg" alt="Garda Landscape" class="gallery-image" onerror="this.parentElement.innerHTML='<div class=\'image-fallback\'>Garda Landscape</div>'">
+                        </picture>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="animated delay-1">
+                <h2>Travel Options to Reach Lake Garda</h2>
+                <p>Lake Garda is well-connected to major Italian cities and international destinations. Here are the best ways to reach this beautiful lake:</p>
+                
+                <div class="transport-options">
+                    <div class="transport-card">
+                        <div class="transport-icon">✈</div>
+                        <h3>By Air</h3>
+                        <p>Nearest airports:</p>
+                        <ul>
+                            <li>Verona Villafranca (VRN) - 30km</li>
+                            <li>Brescia Montichiari (VBS) - 40km</li>
+                            <li>Bergamo Orio al Serio (BGY) - 80km</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="transport-card">
+                        <div class="transport-icon">🚆</div>
+                        <h3>By Train</h3>
+                        <p>Main stations:</p>
+                        <ul>
+                            <li>Desenzano del Garda</li>
+                            <li>Peschiera del Garda</li>
+                            <li>Rovereto (north)</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="transport-card">
+                        <div class="transport-icon">🚗</div>
+                        <h3>By Car</h3>
+                        <p>Highway connections:</p>
+                        <ul>
+                            <li>A4 from Milan/Venice</li>
+                            <li>A22 from Austria</li>
+                            <li>SS45bis along west shore</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="transport-card">
+                        <div class="transport-icon">⛴</div>
+                        <h3>By Ferry</h3>
+                        <p>Ferry services:</p>
+                        <ul>
+                            <li>Regular passenger ferries</li>
+                            <li>Car ferries at select points</li>
+                            <li>Fast hydrofoil options</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="travel-tip">
+                    <div class="tip-icon">💡</div>
+                    <div>
+                        <h3>Travel Tip</h3>
+                        <p>The best way to explore Lake Garda is by combining different transportation methods. Arrive by train or plane, then use local buses, ferries, and bicycles to get around the lake area. Consider purchasing a combined transportation pass if you plan to use public transport extensively.</p>
+                    </div>
+                </div>
+                
+                <div class="image-gallery">
+                    <div class="gallery-item">
+                        <picture>
+                            <source srcset="https://images.pexels.com/photos/163726/belgium-antwerp-shipping-container-163726.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" type="image/jpeg">
+                            <img src="https://images.pexels.com/photos/163726/belgium-antwerp-shipping-container-163726.jpeg" alt="Garda Ferry" class="gallery-image" onerror="this.parentElement.innerHTML='<div class=\'image-fallback\'>Garda Ferry</div>'">
+                        </picture>
+                    </div>
+                    <div class="gallery-item">
+                        <picture>
+                            <source srcset="https://images.pexels.com/photos/2045248/pexels-photo-2045248.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" type="image/jpeg">
+                            <img src="https://images.pexels.com/photos/2045248/pexels-photo-2045248.jpeg" alt="Train near Garda" class="gallery-image" onerror="this.parentElement.innerHTML='<div class=\'image-fallback\'>Train Station</div>'">
+                        </picture>
+                    </div>
+                    <div class="gallery-item">
+                        <picture>
+                            <source srcset="https://images.pexels.com/photos/1486785/pexels-photo-1486785.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" type="image/jpeg">
+                            <img src="https://images.pexels.com/photos/1486785/pexels-photo-1486785.jpeg" alt="Road to Garda" class="gallery-image" onerror="this.parentElement.innerHTML='<div class=\'image-fallback\'>Road to Garda</div>'">
+                        </picture>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <script>
+        // Simple animation trigger
+        document.addEventListener('DOMContentLoaded', function() {
+            const animatedElements = document.querySelectorAll('.animated');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            animatedElements.forEach(element => {
+                element.style.opacity = 0;
+                observer.observe(element);
+            });
+            
+            // Gallery image hover effect
+            const galleryItems = document.querySelectorAll('.gallery-item');
+            galleryItems.forEach(item => {
+                item.addEventListener('mouseenter', function() {
+                    const img = this.querySelector('.gallery-image');
+                    if (img) {
+                        img.style.transform = 'scale(1.1)';
+                    }
+                });
+                item.addEventListener('mouseleave', function() {
+                    const img = this.querySelector('.gallery-image');
+                    if (img) {
+                        img.style.transform = 'scale(1)';
+                    }
+                });
+            });
+            
+            // Preload images to prevent flickering
+            function preloadImage(url) {
+                const img = new Image();
+                img.src = url;
+            }
+            
+            // List of all image URLs to preload
+            const imageUrls = [
+                'https://images.pexels.com/photos/572897/pexels-photo-572897.jpeg',
+                'https://images.pexels.com/photos/2386318/pexels-photo-2386318.jpeg',
+                'https://images.pexels.com/photos/1118332/pexels-photo-1118332.jpeg',
+                'https://images.pexels.com/photos/163726/belgium-antwerp-shipping-container-163726.jpeg',
+                'https://images.pexels.com/photos/2045248/pexels-photo-2045248.jpeg',
+                'https://images.pexels.com/photos/1486785/pexels-photo-1486785.jpeg'
+            ];
+            
+            imageUrls.forEach(url => preloadImage(url));
+        });
+    </script>
+    <a href="index.html">Back to Home</a>
+</body>
+</html>

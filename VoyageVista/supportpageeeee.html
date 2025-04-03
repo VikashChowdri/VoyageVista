@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VoyageVista - Legal</title>
+    <style>
+        :root {
+            --primary: #3498db;
+            --secondary: #2c3e50;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --gray: #95a5a6;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            text-align: center;
+            padding: 60px 0 40px;
+            margin-bottom: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+            color: white;
+        }
+        
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(52, 152, 219, 0), rgba(44, 62, 80, 0.018)),
+                        url('https://images.unsplash.com/photo-1508672019048-805c876b67e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') center/cover no-repeat;
+            z-index: -1;
+        }
+        
+        .logo-container {
+            margin-bottom: 25px;
+        }
+        
+        .logo-img {
+            height: 80px;
+            width: auto;
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+            transition: transform 0.3s ease;
+        }
+        
+        .logo-img:hover {
+            transform: scale(1.05);
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            font-weight: 700;
+        }
+        
+        .logo-text {
+            color: white;
+            font-weight: 500;
+            font-size: 1.3em;
+            letter-spacing: 1px;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+        }
+        
+        .tab-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .tab-btn {
+            padding: 12px 25px;
+            background: white;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--dark);
+            transition: all 0.3s ease;
+            border-radius: 30px;
+            margin: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .tab-btn:hover {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .tab-btn.active {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+        
+        .content-section {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            margin-bottom: 30px;
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .content-section.active {
+            display: block;
+        }
+        
+        h2 {
+            color: var(--primary);
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+            border-bottom: 2px solid var(--light);
+            padding-bottom: 10px;
+        }
+        
+        h3 {
+            color: var(--secondary);
+            margin: 15px 0 10px;
+            font-size: 1.3rem;
+        }
+        
+        p, ul {
+            margin-bottom: 15px;
+            color: black;
+        }
+        
+        ul {
+            padding-left: 20px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+        }
+        
+        .highlight {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid var(--primary);
+            margin: 20px 0;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            
+            header {
+                padding: 40px 0 30px;
+            }
+            
+            .logo-img {
+                height: 60px;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .content-section {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo-container">
+                <!-- Actual travel logo from the web (free to use) -->
+                <!-- <img src="https://www.freepnglogos.com/uploads/travel-logo-png/travel-logo-png-transparent-travel-logo-images-5.png" alt="VoyageVista Logo" class="logo-img"> -->
+            </div>
+            <h1>Legal Information</h1>
+            <p class="logo-text">Your trusted travel companion</p>
+        </header>
+        
+        <div class="tab-container">
+            <button class="tab-btn active" data-tab="privacy">Privacy Policy</button>
+            <button class="tab-btn" data-tab="terms">Terms of Service</button>
+            <button class="tab-btn" data-tab="payments">Payments</button>
+        </div>
+        
+        <section id="privacy" class="content-section active">
+            <h2>Privacy Policy</h2>
+            <p>Last updated: January 2023</p>
+            
+            <h3>1. Information We Collect</h3>
+            <p>We collect information to provide better services to all our users:</p>
+            <ul>
+                <li><strong>Personal Information:</strong> Name, email, phone number when you create an account.</li>
+                <li><strong>Travel Information:</strong> Itineraries, preferences, and special requirements.</li>
+                <li><strong>Device Information:</strong> IP address, browser type, and operating system.</li>
+                <li><strong>Usage Data:</strong> How you interact with our services.</li>
+            </ul>
+            
+            <h3>2. How We Use Information</h3>
+            <p>We use the information we collect to:</p>
+            <ul>
+                <li>Provide, maintain, and improve our services</li>
+                <li>Personalize your travel experience</li>
+                <li>Process transactions and send notifications</li>
+                <li>Detect and prevent fraud</li>
+                <li>Comply with legal obligations</li>
+            </ul>
+            
+            <div class="highlight">
+                <h3>Your Rights</h3>
+                <p>You have the right to access, correct, or delete your personal data. Contact us at privacy@voyagevista.com to exercise these rights.</p>
+            </div>
+        </section>
+        
+        <section id="terms" class="content-section">
+            <h2>Terms of Service</h2>
+            <p>Effective date: January 2023</p>
+            
+            <h3>1. Acceptance of Terms</h3>
+            <p>By accessing or using VoyageVista services, you agree to be bound by these Terms. If you disagree, you may not use our services.</p>
+            
+            <h3>2. User Responsibilities</h3>
+            <ul>
+                <li>You must provide accurate information when creating an account</li>
+                <li>You are responsible for maintaining the confidentiality of your account</li>
+                <li>You agree not to use our services for any unlawful purpose</li>
+            </ul>
+            
+            <h3>3. Service Modifications</h3>
+            <p>VoyageVista reserves the right to modify or discontinue services at any time without notice. We are not liable for any modification or discontinuance.</p>
+            
+            <h3>4. Limitation of Liability</h3>
+            <p>VoyageVista shall not be liable for any indirect, incidental, special, or consequential damages resulting from the use or inability to use our services.</p>
+        </section>
+        
+        <section id="payments" class="content-section">
+            <h2>Payments & Refunds</h2>
+            
+            <h3>1. Payment Methods</h3>
+            <p>We accept the following payment methods:</p>
+            <ul>
+                <li>Credit/Debit Cards (Visa, MasterCard, American Express)</li>
+                <li>PayPal</li>
+                <li>Bank Transfers (for certain services)</li>
+                <li>Cryptocurrencies (selected services)</li>
+            </ul>
+            
+            <h3>2. Pricing</h3>
+            <p>All prices are displayed in USD unless otherwise specified. Prices are subject to change without notice.</p>
+            
+            <h3>3. Cancellations & Refunds</h3>
+            <ul>
+                <li>Cancellations made 48+ hours before service: Full refund</li>
+                <li>Cancellations made 24-48 hours before service: 50% refund</li>
+                <li>Cancellations made less than 24 hours before service: No refund</li>
+                <li>Refunds are processed within 7-10 business days</li>
+            </ul>
+            
+            <div class="highlight">
+                <h3>Security Guarantee</h3>
+                <p>All transactions are encrypted using SSL technology. We never store your full payment details on our servers.</p>
+            </div>
+        </section>
+        
+        <footer>
+            <p>&copy; 2023 VoyageVista. All rights reserved.</p>
+            <p>Contact us: legal@voyagevista.com | +91 9373216209</p>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabButtons = document.querySelectorAll('.tab-btn');
+            const contentSections = document.querySelectorAll('.content-section');
+            
+            tabButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Remove active class from all buttons and sections
+                    tabButtons.forEach(btn => btn.classList.remove('active'));
+                    contentSections.forEach(section => section.classList.remove('active'));
+                    
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    // Show corresponding content section
+                    const tabId = this.getAttribute('data-tab');
+                    document.getElementById(tabId).classList.add('active');
+                });
+            });
+            
+            // Smooth scroll for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        });
+    </script>
+    <a href="index.html">Back to home</a>
+</body>
+</html>

@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - VoyageVista</title>
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #2a5ca7;
+      --secondary: #e74c3c;
+      --accent: #f39c12;
+      --light: #f8f9fa;
+      --dark: #343a40;
+    }
+    
+    .auth-section {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      background: url('https://images.unsplash.com/photo-1506929562872-bb421503ef21?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80') no-repeat center center;
+      background-size: cover;
+    }
+    
+    .auth-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+    }
+    
+    .auth-container {
+      position: relative;
+      max-width: 450px;
+      width: 90%;
+      margin: 2rem auto;
+      padding: 2.5rem;
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      backdrop-filter: blur(5px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      z-index: 1;
+      transform: translateY(20px);
+      opacity: 0;
+      animation: fadeInUp 0.5s 0.3s forwards;
+    }
+    
+    @keyframes fadeInUp {
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+    
+    .auth-header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    
+    .auth-header h2 {
+      color: var(--primary);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .auth-header p {
+      color: var(--dark);
+      opacity: 0.8;
+    }
+    
+    .auth-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    
+    .input-group {
+      position: relative;
+    }
+    
+    .input-group i {
+      position: absolute;
+      left: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--primary);
+    }
+    
+    .auth-form input {
+      width: 100%;
+      padding: 15px 15px 15px 45px;
+      border: 2px solid #e0e0e0;
+      border-radius: 8px;
+      font-size: 1rem;
+      transition: all 0.3s;
+      background-color: var(--light);
+    }
+    
+    .auth-form input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(42, 92, 167, 0.2);
+      outline: none;
+    }
+    
+    .auth-form button {
+      padding: 15px;
+      background: linear-gradient(135deg, var(--primary), #1a4a8a);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1rem;
+      font-weight: 600;
+      transition: all 0.3s;
+      box-shadow: 0 4px 15px rgba(42, 92, 167, 0.3);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    
+    .auth-form button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(42, 92, 167, 0.4);
+    }
+    
+    .auth-footer {
+      text-align: center;
+      margin-top: 1.5rem;
+      color: var(--dark);
+    }
+    
+    .auth-footer a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s;
+    }
+    
+    .auth-footer a:hover {
+      color: var(--accent);
+      text-decoration: underline;
+    }
+    
+    .social-login {
+      margin-top: 2rem;
+      text-align: center;
+    }
+    
+    .social-login p {
+      position: relative;
+      color: var(--dark);
+      margin-bottom: 1rem;
+    }
+    
+    .social-login p::before,
+    .social-login p::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      width: 30%;
+      height: 1px;
+      background: #ddd;
+    }
+    
+    .social-login p::before {
+      left: 0;
+    }
+    
+    .social-login p::after {
+      right: 0;
+    }
+    
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+    }
+    
+    .social-icons a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      color: white;
+      transition: all 0.3s;
+    }
+    
+    .social-icons a:hover {
+      transform: translateY(-3px);
+    }
+    
+    .facebook { background: #3b5998; }
+    .google { background: #db4437; }
+    .twitter { background: #1da1f2; }
+    
+    /* Responsive adjustments */
+    @media (max-width: 576px) {
+      .auth-container {
+        padding: 1.5rem;
+      }
+      
+      .auth-header h2 {
+        font-size: 1.5rem;
+      }
+    }
+
+    /* Spin animation for loader */
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    .spin {
+      animation: spin 1s linear infinite;
+      display: inline-block;
+    }
+  </style>
+</head>
+<body>
+  <!-- Reuse your header -->
+  <header class="header" id="header">
+    <nav class="nav container">
+      <a href="#" class="nav__logo">VoyageVista</a>
+      <div class="nav__menu" id="nav-menu">
+        <ul class="nav__list">
+          <li class="nav__item">
+            <a href="index.html#home" class="nav__link">Home</a>
+          </li>
+          <li class="nav__item">
+            <a href="index.html#about" class="nav__link">About</a>
+          </li>
+          <li class="nav__item">
+            <a href="index.html#popular" class="nav__link">Popular</a>
+          </li>
+          <li class="nav__item">
+            <a href="index.html#explore" class="nav__link">Explore</a>
+          </li>
+          <li class="nav__item">
+            <a href="login.html" class="nav__link active-link">Login</a>
+          </li>
+        </ul>
+        <div class="nav__close" id="nav-close">
+          <i class="ri-close-line"></i>
+        </div>
+      </div>
+      <div class="nav__toggle" id="nav-toggle">
+        <i class="ri-menu-fill"></i>
+      </div>
+    </nav>
+  </header>
+
+  <main class="main">
+    <section class="auth-section">
+      <div class="auth-container">
+        <div class="auth-header">
+          <h2>Welcome Back</h2>
+          <p>Sign in to access your travel plans and saved destinations</p>
+        </div>
+        
+        <form class="auth-form" id="login-form">
+          <div class="input-group">
+            <i class="ri-mail-line"></i>
+            <input type="email" placeholder="Email Address" required>
+          </div>
+          
+          <div class="input-group">
+            <i class="ri-lock-2-line"></i>
+            <input type="password" placeholder="Password" required>
+          </div>
+          
+          <button type="submit">
+            <i class="ri-login-box-line"></i> Login
+          </button>
+          
+          <div class="auth-footer">
+            <a href="forgot-password.html">Forgot password?</a>
+          </div>
+        </form>
+        
+        <div class="social-login">
+          <p>Or login with</p>
+          <div class="social-icons">
+            <a href="#" class="facebook"><i class="ri-facebook-fill"></i></a>
+            <a href="#" class="google"><i class="ri-google-fill"></i></a>
+            <a href="#" class="twitter"><i class="ri-twitter-fill"></i></a>
+          </div>
+        </div>
+        
+        <!-- <div class="auth-footer">
+          Don't have an account? <a href="register.html">Create one</a>
+        </div> -->
+      </div>
+    </section>
+  </main>
+
+  <!-- Reuse your footer -->
+  <footer class="footer">
+    <div class="footer__container container grid">
+      <div class="footer__content grid">
+        <div>
+          <a href="#" class="footer__logo" style="font-family: cursive">VoyageVista</a>
+          <p class="footer__decsription">
+            Travel with us and explore <br>
+            the world without limits.
+          </p>
+        </div>
+        <!-- Rest of your footer content -->
+      </div>
+      <div class="footer__group">
+        <div class="footer__social">
+          <a href="#" class="footer__social-link"><i class="ri-facebook-line"></i></a>
+          <a href="#" class="footer__social-link"><i class="ri-instagram-line"></i></a>
+          <a href="#" class="footer__social-link"><i class="ri-twitter-line"></i></a>
+          <a href="#" class="footer__social-link"><i class="ri-youtube-line"></i></a>
+        </div>
+        <span class="footer__copy">
+          &#169; Copyright Voyage Vista. All rights reserved
+        </span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('login-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      localStorage.setItem('isLoggedIn', 'true');
+      
+      // Add a loading effect
+      const button = this.querySelector('button');
+      button.innerHTML = '<i class="ri-loader-4-line spin"></i> Authenticating';
+      button.disabled = true;
+      
+      // Simulate API call
+      setTimeout(() => {
+        window.location.href = 'index.html';
+      }, 1500);
+    });
+    
+    // Animation for the form
+    document.addEventListener('DOMContentLoaded', function() {
+      const inputs = document.querySelectorAll('.auth-form input');
+      inputs.forEach((input, index) => {
+        input.style.opacity = '0';
+        input.style.transform = 'translateY(20px)';
+        input.style.animation = `fadeInUp 0.5s ${index * 0.1 + 0.5}s forwards`;
+      });
+    });
+  </script>
+</body>
+</html>

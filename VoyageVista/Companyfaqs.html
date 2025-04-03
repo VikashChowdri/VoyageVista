@@ -1,0 +1,1152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="shortcut icon" href="assets/img/favicon.png" type="image/x-icon">
+   <link href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet">
+   <title>Features - VoyageVista</title>
+   <style>
+      /*=============== BASE ===============*/
+      * {
+         margin: 0;
+         padding: 0;
+         box-sizing: border-box;
+      }
+
+      body {
+         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+         background-color: #f8f9fa;
+         color: #333;
+         line-height: 1.6;
+      }
+
+      .container {
+         max-width: 1200px;
+         margin: 0 auto;
+         padding: 0 1.5rem;
+      }
+
+      .section {
+         padding: 4rem 0;
+      }
+
+      .grid {
+         display: grid;
+      }
+
+      /*=============== HEADER ===============*/
+      .header {
+         position: fixed;
+         top: 0;
+         left: 0;
+         width: 100%;
+         background-color: #fff;
+         box-shadow: 0 2px 16px rgba(0, 0, 0, 0.1);
+         z-index: 100;
+      }
+
+      .nav {
+         height: 3.5rem;
+         display: flex;
+         justify-content: space-between;
+         align-items: center;
+      }
+
+      .nav__logo {
+         font-size: 1.25rem;
+         font-weight: 700;
+         color: #3a0ca3;
+         text-decoration: none;
+      }
+
+      .nav__menu {
+         position: fixed;
+         top: -100%;
+         left: 0;
+         width: 100%;
+         padding: 4rem 0 3rem;
+         background-color: #fff;
+         box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+         transition: top 0.4s;
+      }
+
+      .nav__list {
+         display: flex;
+         flex-direction: column;
+         row-gap: 2rem;
+         text-align: center;
+      }
+
+      .nav__link {
+         color: #333;
+         font-weight: 500;
+         text-decoration: none;
+         transition: color 0.3s;
+      }
+
+      .nav__link:hover {
+         color: #3a0ca3;
+      }
+
+      .nav__close {
+         position: absolute;
+         top: 1rem;
+         right: 1.5rem;
+         font-size: 1.5rem;
+         cursor: pointer;
+      }
+
+      .nav__toggle {
+         font-size: 1.25rem;
+         cursor: pointer;
+      }
+
+      /* Show menu */
+      .show-menu {
+         top: 0;
+      }
+
+      /*=============== FEATURES HERO ===============*/
+      .features-hero {
+         background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+                     url('https://images.unsplash.com/photo-1433838552652-f9a46b332c40?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80') no-repeat center center/cover;
+         height: 60vh;
+         display: flex;
+         align-items: center;
+         text-align: center;
+         color: white;
+         padding: 0 2rem;
+         margin-bottom: 3rem;
+         position: relative;
+      }
+
+      .features-hero__container {
+         width: 100%;
+      }
+
+      .features-hero__title {
+         font-size: 3.5rem;
+         margin-bottom: 1rem;
+         font-weight: 800;
+         text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+         color: #fff;
+      }
+
+      .features-hero__subtitle {
+         font-size: 1.5rem;
+         max-width: 800px;
+         margin: 0 auto;
+         text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
+         font-weight: 500;
+         color: #f8f8f8;
+      }
+
+      /*=============== FEATURES OVERVIEW ===============*/
+      .features-overview {
+         padding: 5rem 0;
+      }
+
+      .section__title {
+         color: #222;
+         font-weight: 700;
+         margin-bottom: 2rem;
+         text-align: center;
+         font-size: 2.5rem;
+      }
+
+      .features-overview__description {
+         max-width: 800px;
+         margin: 0 auto 3rem;
+         text-align: center;
+         color: #555;
+         font-size: 1.1rem;
+         line-height: 1.6;
+      }
+
+      .features-overview__content {
+         grid-template-columns: repeat(3, 1fr);
+         gap: 2rem;
+      }
+
+      .features-overview__card {
+         background: white;
+         border-radius: 15px;
+         padding: 2rem;
+         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+         transition: transform 0.3s ease, box-shadow 0.3s ease;
+         text-align: center;
+      }
+
+      .features-overview__card:hover {
+         transform: translateY(-10px);
+         box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+      }
+
+      .features-overview__icon-box {
+         width: 80px;
+         height: 80px;
+         background: linear-gradient(135deg, #4361ee, #3a0ca3);
+         border-radius: 50%;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         margin: 0 auto 1.5rem;
+      }
+
+      .features-overview__icon {
+         font-size: 2rem;
+         color: white;
+      }
+
+      .features-overview__card-title {
+         font-size: 1.5rem;
+         margin-bottom: 1rem;
+         color: #222;
+         font-weight: 600;
+      }
+
+      .features-overview__card-description {
+         color: #666;
+         line-height: 1.6;
+      }
+
+      /*=============== KEY FEATURES ===============*/
+      .key-features {
+         background-color: #f9f9ff;
+         padding: 5rem 0;
+      }
+
+      .key-features__item {
+         background: white;
+         border-radius: 15px;
+         overflow: hidden;
+         box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+         margin-bottom: 2rem;
+         transition: transform 0.3s ease;
+      }
+
+      .key-features__item:hover {
+         transform: translateY(-5px);
+      }
+
+      .key-features__item-header {
+         display: flex;
+         align-items: center;
+         padding: 1.5rem;
+         background: linear-gradient(135deg, #4361ee, #3a0ca3);
+         color: white;
+      }
+
+      .key-features__item-icon-box {
+         width: 50px;
+         height: 50px;
+         background: rgba(255, 255, 255, 0.2);
+         border-radius: 50%;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         margin-right: 1rem;
+      }
+
+      .key-features__item-icon {
+         font-size: 1.5rem;
+      }
+
+      .key-features__item-title {
+         font-size: 1.3rem;
+         margin: 0;
+         color: #fff;
+         font-weight: 600;
+      }
+
+      .key-features__item-body {
+         padding: 2rem;
+      }
+
+      .key-features__item-description {
+         color: #555;
+         margin-bottom: 1.5rem;
+         line-height: 1.6;
+      }
+
+      .key-features__item-list {
+         list-style: none;
+         padding: 0;
+      }
+
+      .key-features__item-list li {
+         margin-bottom: 0.8rem;
+         display: flex;
+         align-items: flex-start;
+         color: #444;
+      }
+
+      .key-features__item-list i {
+         color: #4361ee;
+         margin-right: 0.5rem;
+         font-size: 1.1rem;
+         margin-top: 0.2rem;
+      }
+
+      /*=============== MOBILE FEATURES ===============*/
+      .mobile-features {
+         padding: 5rem 0;
+         background: white;
+      }
+
+      .mobile-features__container {
+         grid-template-columns: repeat(2, 1fr);
+         align-items: center;
+         gap: 3rem;
+      }
+
+      .mobile-features__data {
+         order: 1;
+      }
+
+      .mobile-features__description {
+         color: #555;
+         margin-bottom: 2rem;
+         line-height: 1.6;
+      }
+
+      .mobile-features__list {
+         margin-bottom: 2rem;
+      }
+
+      .mobile-features__item {
+         display: flex;
+         margin-bottom: 1.5rem;
+      }
+
+      .mobile-features__item-icon {
+         font-size: 1.8rem;
+         color: #4361ee;
+         margin-right: 1rem;
+         min-width: 40px;
+      }
+
+      .mobile-features__item-title {
+         font-size: 1.2rem;
+         margin-bottom: 0.3rem;
+         color: #222;
+         font-weight: 600;
+      }
+
+      .mobile-features__item-description {
+         color: #666;
+         line-height: 1.5;
+         font-size: 0.95rem;
+      }
+
+      .mobile-features__buttons {
+         display: flex;
+         gap: 1rem;
+         flex-wrap: wrap;
+      }
+
+      .mobile-features__button {
+         display: block;
+         width: 150px;
+         transition: transform 0.3s ease;
+      }
+
+      .mobile-features__button:hover {
+         transform: translateY(-3px);
+      }
+
+      .mobile-features__button-img {
+         width: 100%;
+         height: auto;
+         border-radius: 8px;
+      }
+
+      .mobile-features__image {
+         order: 2;
+         text-align: center;
+      }
+
+      .mobile-features__img {
+         max-width: 100%;
+         height: auto;
+         border-radius: 20px;
+         box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+      }
+
+      /*=============== PREMIUM FEATURES ===============*/
+      .premium-features {
+         padding: 5rem 0;
+         background: linear-gradient(135deg, #3a0ca3, #4361ee);
+         color: white;
+         text-align: center;
+         position: relative;
+         overflow: hidden;
+      }
+
+      .premium-features::before {
+         content: '';
+         position: absolute;
+         top: -50px;
+         left: -50px;
+         width: 200px;
+         height: 200px;
+         background: rgba(255, 255, 255, 0.1);
+         border-radius: 50%;
+      }
+
+      .premium-features::after {
+         content: '';
+         position: absolute;
+         bottom: -80px;
+         right: -80px;
+         width: 300px;
+         height: 300px;
+         background: rgba(255, 255, 255, 0.1);
+         border-radius: 50%;
+      }
+
+      .premium-features__description {
+         max-width: 700px;
+         margin: 0 auto 3rem;
+         font-size: 1.1rem;
+         opacity: 0.9;
+      }
+
+      .premium-features__content {
+         grid-template-columns: repeat(4, 1fr);
+         gap: 2rem;
+         margin-bottom: 3rem;
+      }
+
+      .premium-features__card {
+         background: rgba(255, 255, 255, 0.1);
+         backdrop-filter: blur(10px);
+         border-radius: 15px;
+         padding: 2rem;
+         border: 1px solid rgba(255, 255, 255, 0.2);
+         transition: transform 0.3s ease, background 0.3s ease;
+      }
+
+      .premium-features__card:hover {
+         transform: translateY(-10px);
+         background: rgba(255, 255, 255, 0.2);
+      }
+
+      .premium-features__icon {
+         font-size: 2.5rem;
+         margin-bottom: 1rem;
+         color: white;
+      }
+
+      .premium-features__title {
+         font-size: 1.5rem;
+         margin-bottom: 1rem;
+         color: #fff;
+         font-weight: 600;
+      }
+
+      .premium-features__card-description {
+         opacity: 0.9;
+         line-height: 1.6;
+      }
+
+      .button {
+         display: inline-block;
+         padding: 1rem 2rem;
+         border-radius: 50px;
+         font-weight: 600;
+         text-decoration: none;
+         transition: all 0.3s ease;
+      }
+
+      .premium-features__button {
+         background: white;
+         color: #4361ee;
+         font-weight: 600;
+         padding: 1rem 2rem;
+         border-radius: 50px;
+         display: inline-flex;
+         align-items: center;
+         transition: all 0.3s ease;
+      }
+
+      .premium-features__button:hover {
+         background: #f1f1f1;
+         transform: translateY(-3px);
+         box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      .premium-features__button i {
+         margin-left: 0.5rem;
+         transition: transform 0.3s ease;
+      }
+
+      .premium-features__button:hover i {
+         transform: translateX(5px);
+      }
+
+      /*=============== FOOTER ===============*/
+.footer {
+    background-color: #222;
+    color: #fff;
+    padding: 4rem 0 2rem;
+}
+
+.footer__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+.footer__content {
+    display: flex;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.footer__logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #fff;
+    text-decoration: none;
+    margin-bottom: 1rem;
+    display: inline-block;
+    font-family: cursive;
+}
+
+.footer__description {
+    margin-bottom: 1.5rem;
+    color: #aaa;
+}
+
+.footer__title {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+    color: #fff;
+}
+
+.footer__links {
+    list-style: none;
+}
+
+.footer__link {
+    color: #aaa;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 1rem;
+    transition: color 0.3s;
+}
+
+.footer__link:hover {
+    color: #fff;
+}
+
+.footer__group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 3rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 2rem;
+}
+
+.footer__social {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.footer__social-link {
+    color: #fff;
+    font-size: 1.5rem;
+    transition: color 0.3s;
+}
+
+.footer__social-link:hover {
+    color: #4361ee;
+}
+
+.footer__copy {
+    color: #aaa;
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+    .footer__content {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .footer__content {
+        grid-template-columns: 1fr;
+    }
+}
+
+      /*=============== SCROLL UP ===============*/
+      .scrollup {
+         position: fixed;
+         right: 1rem;
+         bottom: -30%;
+         background-color: #4361ee;
+         color: #fff;
+         padding: 0.5rem;
+         border-radius: 50%;
+         display: inline-flex;
+         font-size: 1.25rem;
+         z-index: 10;
+         transition: bottom 0.4s, transform 0.4s;
+      }
+
+      .scrollup:hover {
+         transform: translateY(-0.5rem);
+      }
+
+      /* Show Scroll Up */
+      .show-scroll {
+         bottom: 3rem;
+      }
+
+      /*=============== BREAKPOINTS ===============*/
+      /* For small devices */
+      @media screen and (max-width: 576px) {
+         .features-hero {
+            height: 40vh;
+         }
+         
+         .features-hero__title {
+            font-size: 2rem;
+         }
+         
+         .features-hero__subtitle {
+            font-size: 1.1rem;
+         }
+         
+         .section__title {
+            font-size: 1.8rem;
+         }
+         
+         .features-overview__content,
+         .premium-features__content,
+         .footer__content {
+            grid-template-columns: 1fr;
+         }
+         
+         .mobile-features__container {
+            grid-template-columns: 1fr;
+         }
+         
+         .mobile-features__image {
+            order: -1;
+            margin-bottom: 2rem;
+         }
+         
+         .mobile-features__buttons {
+            justify-content: center;
+         }
+         
+         .mobile-features__button {
+            width: 120px;
+         }
+      }
+
+      /* For medium devices */
+      @media screen and (max-width: 768px) {
+         .features-hero {
+            height: 50vh;
+         }
+         
+         .features-hero__title {
+            font-size: 2.5rem;
+         }
+         
+         .features-overview__content {
+            grid-template-columns: repeat(2, 1fr);
+         }
+         
+         .premium-features__content {
+            grid-template-columns: repeat(2, 1fr);
+         }
+         
+         .footer__content {
+            grid-template-columns: repeat(2, 1fr);
+         }
+      }
+
+      /* For large devices */
+      @media screen and (min-width: 992px) {
+         .nav {
+            height: calc(3.5rem + 1rem);
+         }
+         
+         .nav__menu {
+            position: static;
+            width: initial;
+            padding: 0;
+            background-color: transparent;
+            box-shadow: none;
+         }
+         
+         .nav__list {
+            flex-direction: row;
+            column-gap: 2.5rem;
+         }
+         
+         .nav__toggle,
+         .nav__close {
+            display: none;
+         }
+      }
+
+      @media screen and (max-width: 992px) {
+         .features-hero__title {
+            font-size: 2.8rem;
+         }
+         
+         .features-hero__subtitle {
+            font-size: 1.2rem;
+         }
+      }
+   </style>
+</head>
+<body>
+   <!--==================== HEADER ====================-->
+   <header class="header" id="header">
+      <nav class="nav container">
+         <a href="index.html" class="nav__logo">
+             VoyageVista
+         </a>
+
+         <div class="nav__menu" id="nav-menu">
+             <ul class="nav__list">
+                 <li class="nav__item">
+                     <a href="index.html" class="nav__link">Home</a>
+                 </li>
+
+                 <li class="nav__item">
+                     <a href="about-us.html" class="nav__link">About</a>
+                 </li>
+
+                 <li class="nav__item">
+                     <a href="index.html#popular" class="nav__link">Popular</a>
+                 </li>
+
+                 <li class="nav__item">
+                     <a href="index.html#explore" class="nav__link">Explore</a>
+                 </li>
+             </ul>
+
+             <!-- Close button -->
+             <div class="nav__close" id="nav-close">
+                 <i class="ri-close-line"></i>
+             </div>
+         </div>
+
+         <!-- Toggle Button -->
+         <div class="nav__toggle" id="nav-toggle">
+             <i class="ri-menu-fill"></i>
+         </div>
+      </nav>
+   </header>
+
+   <!--==================== MAIN ====================-->
+   <main class="main">
+      <section class="features-hero">
+         <div class="features-hero__container container">
+            <h1 class="features-hero__title">Our Features</h1>
+            <p class="features-hero__subtitle">Discover what makes VoyageVista the ultimate travel companion</p>
+         </div>
+      </section>
+
+      <section class="features-overview section">
+         <div class="features-overview__container container">
+            <h2 class="section__title">Why Choose VoyageVista?</h2>
+            <p class="features-overview__description">
+               Our platform is designed with travelers in mind, offering a comprehensive suite of tools and resources 
+               to make your journey seamless from planning to return. Here's what sets us apart:
+            </p>
+            
+            <div class="features-overview__content grid">
+               <div class="features-overview__card">
+                  <div class="features-overview__icon-box">
+                     <i class="ri-map-pin-line features-overview__icon"></i>
+                  </div>
+                  <h3 class="features-overview__card-title">Personalized Recommendations</h3>
+                  <p class="features-overview__card-description">
+                     Our AI-powered system learns your preferences to suggest destinations and experiences tailored just for you.
+                  </p>
+               </div>
+
+               <div class="features-overview__card">
+                  <div class="features-overview__icon-box">
+                     <i class="ri-flight-takeoff-line features-overview__icon"></i>
+                  </div>
+                  <h3 class="features-overview__card-title">Comprehensive Flight Search</h3>
+                  <p class="features-overview__card-description">
+                     Compare flights from hundreds of airlines to find the best deals and most convenient routes.
+                  </p>
+               </div>
+
+               <div class="features-overview__card">
+                  <div class="features-overview__icon-box">
+                     <i class="ri-hotel-line features-overview__icon"></i>
+                  </div>
+                  <h3 class="features-overview__card-title">Curated Accommodations</h3>
+                  <p class="features-overview__card-description">
+                     From luxury hotels to unique homestays, find the perfect place to rest wherever your journey takes you.
+                  </p>
+               </div>
+            </div>
+         </div>
+      </section>
+
+      <section class="key-features section">
+         <div class="key-features__container container">
+            <h2 class="section__title">Key Features</h2>
+            
+            <div class="key-features__content">
+               <div class="key-features__item">
+                  <div class="key-features__item-header">
+                     <div class="key-features__item-icon-box">
+                        <i class="ri-route-line key-features__item-icon"></i>
+                     </div>
+                     <h3 class="key-features__item-title">Intelligent Itinerary Planning</h3>
+                  </div>
+                  <div class="key-features__item-body">
+                     <p class="key-features__item-description">
+                        Our smart itinerary planner helps you create the perfect schedule for your trip, taking into account 
+                        travel times, opening hours, and your personal preferences. Save time and maximize your experience 
+                        with optimized day-by-day plans.
+                     </p>
+                     <ul class="key-features__item-list">
+                        <li><i class="ri-check-line"></i> Day-by-day planning with flexible options</li>
+                        <li><i class="ri-check-line"></i> Automatic travel time calculations</li>
+                        <li><i class="ri-check-line"></i> Real-time updates for weather and local events</li>
+                        <li><i class="ri-check-line"></i> Shareable itineraries with travel companions</li>
+                     </ul>
+                  </div>
+               </div>
+
+               <div class="key-features__item">
+                  <div class="key-features__item-header">
+                     <div class="key-features__item-icon-box">
+                        <i class="ri-compass-3-line key-features__item-icon"></i>
+                     </div>
+                     <h3 class="key-features__item-title">Destination Discovery</h3>
+                  </div>
+                  <div class="key-features__item-body">
+                     <p class="key-features__item-description">
+                        Unsure where to go next? Our destination discovery tool helps you find your perfect match based on your 
+                        interests, budget, and travel style. Explore detailed guides with insider tips, must-see attractions, 
+                        and hidden gems for thousands of destinations worldwide.
+                     </p>
+                     <ul class="key-features__item-list">
+                        <li><i class="ri-check-line"></i> Personalized destination matching</li>
+                        <li><i class="ri-check-line"></i> Comprehensive city and region guides</li>
+                        <li><i class="ri-check-line"></i> Seasonal recommendations and best times to visit</li>
+                        <li><i class="ri-check-line"></i> Local insights from experienced travelers</li>
+                     </ul>
+                  </div>
+               </div>
+
+               <div class="key-features__item">
+                  <div class="key-features__item-header">
+                     <div class="key-features__item-icon-box">
+                        <i class="ri-wallet-3-line key-features__item-icon"></i>
+                     </div>
+                     <h3 class="key-features__item-title">Budget Management</h3>
+                  </div>
+                  <div class="key-features__item-body">
+                     <p class="key-features__item-description">
+                        Keep your travel expenses in check with our comprehensive budget management tools. Set a budget for your 
+                        trip, track expenses in real-time, and receive alerts when you're approaching your limits. Our currency 
+                        converter ensures you always know exactly what you're spending.
+                     </p>
+                     <ul class="key-features__item-list">
+                        <li><i class="ri-check-line"></i> Customizable budget categories</li>
+                        <li><i class="ri-check-line"></i> Real-time expense tracking</li>
+                        <li><i class="ri-check-line"></i> Multi-currency support with live exchange rates</li>
+                        <li><i class="ri-check-line"></i> Expense sharing for group trips</li>
+                     </ul>
+                  </div>
+               </div>
+
+               <div class="key-features__item">
+                  <div class="key-features__item-header">
+                     <div class="key-features__item-icon-box">
+                        <i class="ri-translate-2 key-features__item-icon"></i>
+                     </div>
+                     <h3 class="key-features__item-title">Travel Assistant</h3>
+                  </div>
+                  <div class="key-features__item-body">
+                     <p class="key-features__item-description">
+                        Our AI-powered travel assistant is available 24/7 to help with any questions or issues during your journey. 
+                        From language translation to local recommendations, emergency assistance to booking changes, your virtual 
+                        travel companion has you covered wherever you go.
+                     </p>
+                     <ul class="key-features__item-list">
+                        <li><i class="ri-check-line"></i> Real-time language translation</li>
+                        <li><i class="ri-check-line"></i> Local emergency information and assistance</li>
+                        <li><i class="ri-check-line"></i> On-demand restaurant and activity recommendations</li>
+                        <li><i class="ri-check-line"></i> 24/7 customer support access</li>
+                     </ul>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </section>
+
+      <section class="mobile-features section">
+         <div class="mobile-features__container container grid">
+            <div class="mobile-features__data">
+               <h2 class="section__title">VoyageVista Mobile App</h2>
+               <p class="mobile-features__description">
+                  Take VoyageVista with you wherever you go with our feature-rich mobile app. Available for iOS and Android, 
+                  our app ensures you have all the tools you need right at your fingertips, even when you're offline.
+               </p>
+               
+               <div class="mobile-features__list">
+                  <div class="mobile-features__item">
+                     <i class="ri-wifi-off-line mobile-features__item-icon"></i>
+                     <div>
+                        <h3 class="mobile-features__item-title">Offline Access</h3>
+                        <p class="mobile-features__item-description">
+                           Download your itineraries, maps, and travel guides for offline use when you don't have internet access.
+                        </p>
+                     </div>
+                  </div>
+
+                  <div class="mobile-features__item">
+                     <i class="ri-notification-4-line mobile-features__item-icon"></i>
+                     <div>
+                        <h3 class="mobile-features__item-title">Real-time Alerts</h3>
+                        <p class="mobile-features__item-description">
+                           Receive notifications about flight changes, weather alerts, and travel advisories that may affect your trip.
+                        </p>
+                     </div>
+                  </div>
+
+                  <div class="mobile-features__item">
+                     <i class="ri-camera-line mobile-features__item-icon"></i>
+                     <div>
+                        <h3 class="mobile-features__item-title">Travel Journal</h3>
+                        <p class="mobile-features__item-description">
+                           Capture and organize your travel memories with our built-in journal feature, complete with photo storage and location tagging.
+                        </p>
+                     </div>
+                  </div>
+               </div>
+
+               <div class="mobile-features__buttons">
+                  <a href="#" class="mobile-features__button">
+                     <img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg" alt="Download on App Store" class="mobile-features__button-img">
+                  </a>
+                  <a href="#" class="mobile-features__button">
+                     <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Get it on Google Play" class="mobile-features__button-img">
+                  </a>
+               </div>
+            </div>
+
+            <div class="mobile-features__image">
+               <img src="https://images.unsplash.com/photo-1555774698-0b77e0d5fac6?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="VoyageVista mobile app" class="mobile-features__img">
+            </div>
+         </div>
+      </section>
+
+      <section class="premium-features section">
+         <div class="premium-features__container container">
+            <h2 class="section__title">Premium Features</h2>
+            <p class="premium-features__description">
+               Upgrade to VoyageVista Premium for an enhanced travel experience with exclusive features and benefits.
+            </p>
+            
+            <div class="premium-features__content grid">
+               <div class="premium-features__card">
+                  <i class="ri-vip-crown-line premium-features__icon"></i>
+                  <h3 class="premium-features__title">Priority Support</h3>
+                  <p class="premium-features__card-description">
+                     Get priority access to our customer support team with dedicated assistance for any travel issues.
+                  </p>
+               </div>
+
+               <div class="premium-features__card">
+                  <i class="ri-percent-line premium-features__icon"></i>
+                  <h3 class="premium-features__title">Exclusive Discounts</h3>
+                  <p class="premium-features__card-description">
+                     Enjoy special rates and exclusive deals on flights, accommodations, and activities worldwide.
+                  </p>
+               </div>
+
+               <div class="premium-features__card">
+                  <i class="ri-shield-check-line premium-features__icon"></i>
+                  <h3 class="premium-features__title">Travel Insurance</h3>
+                  <p class="premium-features__card-description">
+                     Comprehensive travel insurance coverage included with your premium subscription for peace of mind.
+                  </p>
+               </div>
+
+               <div class="premium-features__card">
+                  <i class="ri-flight-land-line premium-features__icon"></i>
+                  <h3 class="premium-features__title">Lounge Access</h3>
+                  <p class="premium-features__card-description">
+                     Complimentary airport lounge access at select airports worldwide to relax before your flight.
+                  </p>
+               </div>
+            </div>
+
+            <a href="#" class="button premium-features__button">
+               Upgrade to Premium <i class="ri-arrow-right-line"></i>
+            </a>
+         </div>
+      </section>
+   </main>
+
+   <!--==================== FOOTER ====================-->
+   <footer class="footer">
+      <div class="footer__container container grid">
+         <div class="footer__content grid">
+             <div>
+                 <a href="#" class="footer__logo" style="font-family: cursive;">VoyageVista</a>
+
+                 <p class="footer__decsription">
+                     Travel with us and explore <br> 
+                     the world without limits.
+                 </p>
+             </div>
+
+             <div class="footer__data grid">
+                 <div>
+                     <h3 class="footer__title">About</h3>
+
+                     <ul class="footer__links">
+                         <li>
+                             <a href="about.html" class="footer__link">About Us</a>
+                         </li>
+                         <li>
+                             <a href="features.html" class="footer__link">Features</a>
+                         </li>
+                         <li>
+                             <a href="newsblog.html" class="footer__link">News & Blog</a>
+                         </li>
+                     </ul>
+                 </div>
+
+                 <div>
+                     <h3 class="footer__title">Company</h3>
+
+                     <ul class="footer__links">
+                         <li>
+                             <a href="#" class="footer__link">FAQs</a>
+                         </li>
+                         <li>
+                             <a href="companyhistory.html" class="footer__link">History</a>
+                         </li>
+                         <li>
+                             <a href="COmpanytestimonials.html" class="footer__link">Testimonials</a>
+                         </li>
+                     </ul>
+                 </div>
+
+                 <div>
+                     <h3 class="footer__title">Contact</h3>
+
+                     <ul class="footer__links">
+                         <li>
+                             <a href="Contactpage.html" class="footer__link">Call Center</a>
+                         </li>
+                         <li>
+                             <a href="Contactpage.html" class="footer__link">Support Center</a>
+                         </li>
+                         <li>
+                             <a href="Contactpage.html" class="footer__link">Contact Us</a>
+                         </li>
+                     </ul>
+                 </div>
+
+                 <div>
+                     <h3 class="footer__title">Support</h3>
+
+                     <ul class="footer__links">
+                         <li>
+                             <a href="supportpageeeee.html" class="footer__link">Privacy Policy</a>
+                         </li>
+                         <li>
+                             <a href="supportpageeeee.html" class="footer__link">Terms & Services</a>
+                         </li>
+                         <li>
+                             <a href="supportpageeeee.html" class="footer__link">Payments</a>
+                         </li>
+                     </ul>
+                 </div>
+             </div>
+         </div>
+
+         <div class="footer__group">
+             <div class="footer__social">
+                 <a href="https://www.facebook.com/" target="_blank" class="footer__social-link">
+                     <i class="ri-facebook-line"></i>
+                 </a>
+                 <a href="https://www.instagram.com/" target="_blank" class="footer__social-link">
+                     <i class="ri-instagram-line"></i>
+                 </a>
+                 <a href="https://twitter.com/" target="_blank" class="footer__social-link">
+                     <i class="ri-twitter-line"></i>
+                 </a>
+                 <a href="https://www.youtube.com/" target="_blank" class="footer__social-link">
+                     <i class="ri-youtube-line"></i>
+                 </a>
+             </div>
+
+             <span class="footer__copy">
+                 &#169; Copyright Voyage Vista. All rights reserved
+             </span>
+         </div>
+      </div>
+   </footer>
+
+   <!--========== SCROLL UP ==========-->
+   <a href="#" class="scrollup" id="scroll-up">
+     <i class="ri-arrow-up-line"></i>
+   </a>
+
+   <!--=============== MAIN JS ===============-->
+   <script>
+      // Show scroll up button when scrolling down
+      const scrollUp = () => {
+        const scrollUp = document.getElementById('scroll-up')
+        this.scrollY >= 350 ? scrollUp.classList.add('show-scroll')
+                            : scrollUp.classList.remove('show-scroll')
+      }
+      window.addEventListener('scroll', scrollUp)
+
+      // Show/hide mobile menu
+      const navMenu = document.getElementById('nav-menu'),
+            navToggle = document.getElementById('nav-toggle'),
+            navClose = document.getElementById('nav-close')
+
+      if(navToggle) {
+        navToggle.addEventListener('click', () => {
+          navMenu.classList.add('show-menu')
+        })
+      }
+
+      if(navClose) {
+        navClose.addEventListener('click', () => {
+          navMenu.classList.remove('show-menu')
+        })
+      }
+
+      // Change background header on scroll
+      const scrollHeader = () => {
+        const header = document.getElementById('header')
+        this.scrollY >= 50 ? header.classList.add('scroll-header') 
+                           : header.classList.remove('scroll-header')
+      }
+      window.addEventListener('scroll', scrollHeader)
+   </script>
+</body>
+</html>

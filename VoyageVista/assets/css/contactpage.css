@@ -1,0 +1,196 @@
+/*==================== GENERAL STYLES ====================*/
+:root {
+    --primary-color: #007bff;
+    --secondary-color: #0056b3;
+    --text-color: #333;
+    --bg-color: #f9f9f9;
+    --white-color: #fff;
+    --font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-family);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section {
+    padding: 60px 0;
+}
+
+h1, h2, h3 {
+    color: var(--primary-color);
+}
+
+/*==================== HEADER ====================*/
+.header {
+    background-color: var(--white-color);
+    padding: 20px 0;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+}
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav__logo {
+    font-size: 1.8rem;
+    color: var(--primary-color);
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.nav__list {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+    margin: 0;
+    padding: 0;
+}
+
+.nav__link {
+    color: var(--text-color);
+    font-size: 1rem;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.nav__link:hover {
+    color: var(--primary-color);
+}
+
+/*==================== HERO SECTION ====================*/
+.contact__hero {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../img/homemountain.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: var(--white-color);
+}
+
+.contact__hero-title {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.contact__hero-description {
+    font-size: 1.2rem;
+    max-width: 600px;
+}
+
+/*==================== CONTACT FORM ====================*/
+.contact__form-container {
+    background-color: var(--white-color);
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+}
+
+.contact__form-div {
+    margin-bottom: 20px;
+}
+
+.contact__form-tag {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.contact__form-input, textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+.contact__form-input:focus, textarea:focus {
+    border-color: var(--primary-color);
+    outline: none;
+}
+
+textarea {
+    height: 150px;
+    resize: none;
+}
+
+.contact__button {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    border: none;
+    padding: 12px 24px;
+    font-size: 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.contact__button:hover {
+    background-color: var(--secondary-color);
+}
+
+/*==================== CONTACT INFO ====================*/
+.contact__info-card {
+    background-color: var(--white-color);
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+}
+
+.contact__info-icon {
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin-right: 20px;
+}
+
+.contact__info-title {
+    font-size: 1.2rem;
+    margin: 0;
+}
+
+.contact__info-desc {
+    color: #777;
+}
+
+/*==================== RESPONSIVE DESIGN ====================*/
+@media (max-width: 768px) {
+    .contact__hero-title {
+        font-size: 2.5rem;
+    }
+
+    .contact__hero-description {
+        font-size: 1rem;
+    }
+
+    .contact__form-container, .contact__info-card {
+        padding: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .contact__hero-title {
+        font-size: 2rem;
+    }
+
+    .contact__hero-description {
+        font-size: 0.9rem;
+    }
+}

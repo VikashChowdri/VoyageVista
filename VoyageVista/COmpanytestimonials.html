@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+   <!--=============== FAVICON ===============-->
+   <link rel="shortcut icon" href="assets/img/favicon.png" type="image/x-icon">
+
+   <!--=============== REMIXICONS ===============-->
+   <link href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet">
+
+   <!--=============== CSS ===============-->
+   <link rel="stylesheet" href="assets/css/styles.css">
+   <link rel="stylesheet" href="assets/css/testimonials.css">
+
+   <title>Testimonials - VoyageVista</title>
+   
+   <style>
+      /* Enhanced Testimonials Page Styles */
+      :root {
+         --testimonial-primary: #2563eb;
+         --testimonial-secondary: #1e40af;
+         --testimonial-accent: #f59e0b;
+         --testimonial-light: #f8fafc;
+         --testimonial-dark: #1e293b;
+         --testimonial-gray: #64748b;
+      }
+      
+      .testimonials-hero {
+         background: linear-gradient(135deg, rgba(37, 99, 235, 0.9) 0%, rgba(30, 64, 175, 0.0) 100%), 
+                     url('https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+         color: white;
+         padding: 6rem 0 4rem;
+         text-align: center;
+         position: relative;
+      }
+      
+      .testimonials-hero__container {
+         position: relative;
+         z-index: 2;
+      }
+      
+      .testimonials-hero__title {
+         font-size: 3.5rem;
+         margin-bottom: 1rem;
+         text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      }
+      
+      .testimonials-hero__subtitle {
+         font-size: 1.25rem;
+         max-width: 700px;
+         margin: 0 auto;
+         opacity: 0.9;
+      }
+      
+      .testimonials-featured {
+         padding: 5rem 0;
+         background-color: var(--testimonial-light);
+      }
+      
+      .testimonials-featured__container {
+         max-width: 1200px;
+      }
+      
+      .testimonials-featured__content {
+         display: grid;
+         gap: 3rem;
+         margin-top: 3rem;
+      }
+      
+      .testimonials-featured__card {
+         display: grid;
+         grid-template-columns: 1fr 1.5fr;
+         gap: 2rem;
+         background: white;
+         border-radius: 1rem;
+         overflow: hidden;
+         box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
+         transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      
+      .testimonials-featured__card:hover {
+         transform: translateY(-5px);
+         box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
+      }
+      
+      .testimonials-featured__image {
+         position: relative;
+         min-height: 300px;
+      }
+      
+      .testimonials-featured__img {
+         width: 100%;
+         height: 100%;
+         object-fit: cover;
+         position: absolute;
+         top: 0;
+         left: 0;
+      }
+      
+      .testimonials-featured__data {
+         padding: 2rem 2rem 2rem 0;
+         display: flex;
+         flex-direction: column;
+      }
+      
+      .testimonials-featured__rating {
+         color: var(--testimonial-accent);
+         font-size: 1.25rem;
+         margin-bottom: 1.5rem;
+      }
+      
+      .testimonials-featured__description {
+         font-size: 1.1rem;
+         line-height: 1.6;
+         color: var(--testimonial-gray);
+         margin-bottom: 2rem;
+         flex-grow: 1;
+      }
+      
+      .testimonials-featured__user {
+         margin-bottom: 1rem;
+      }
+      
+      .testimonials-featured__name {
+         font-size: 1.25rem;
+         font-weight: 600;
+         color: var(--testimonial-dark);
+         margin-bottom: 0.25rem;
+      }
+      
+      .testimonials-featured__location {
+         font-size: 0.9rem;
+         color: var(--testimonial-gray);
+      }
+      
+      .testimonials-featured__trip {
+         font-size: 0.9rem;
+         color: var(--testimonial-primary);
+      }
+      
+      .testimonials-featured__trip-title {
+         font-weight: 600;
+      }
+      
+      .testimonials-grid {
+         padding: 5rem 0;
+         background-color: white;
+      }
+      
+      .testimonials-grid__container {
+         max-width: 1200px;
+      }
+      
+      .testimonials-grid__content {
+         grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+         gap: 2rem;
+         margin-top: 3rem;
+      }
+      
+      .testimonials-grid__card {
+         background: white;
+         border-radius: 1rem;
+         padding: 2rem;
+         box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
+         transition: all 0.3s ease;
+         border: 1px solid rgba(0,0,0,0.05);
+      }
+      
+      .testimonials-grid__card:hover {
+         transform: translateY(-5px);
+         box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
+         border-color: rgba(37, 99, 235, 0.2);
+      }
+      
+      .testimonials-grid__user {
+         display: flex;
+         align-items: center;
+         margin-bottom: 1.5rem;
+      }
+      
+      .testimonials-grid__user-img {
+         width: 60px;
+         height: 60px;
+         border-radius: 50%;
+         object-fit: cover;
+         margin-right: 1rem;
+         border: 3px solid var(--testimonial-primary);
+      }
+      
+      .testimonials-grid__user-name {
+         font-size: 1.1rem;
+         font-weight: 600;
+         color: var(--testimonial-dark);
+         margin-bottom: 0.25rem;
+      }
+      
+      .testimonials-grid__user-location {
+         font-size: 0.85rem;
+         color: var(--testimonial-gray);
+      }
+      
+      .testimonials-grid__rating {
+         color: var(--testimonial-accent);
+         margin-bottom: 1.5rem;
+      }
+      
+      .testimonials-grid__description {
+         font-size: 1rem;
+         line-height: 1.6;
+         color: var(--testimonial-gray);
+         margin-bottom: 2rem;
+      }
+      
+      .testimonials-grid__trip {
+         font-size: 0.9rem;
+         color: var(--testimonial-primary);
+      }
+      
+      .testimonials-grid__trip-title {
+         font-weight: 600;
+      }
+      
+      .section__title {
+         text-align: center;
+         font-size: 2.5rem;
+         color: var(--testimonial-dark);
+         margin-bottom: 1rem;
+         position: relative;
+      }
+      
+      .section__title:after {
+         content: '';
+         display: block;
+         width: 80px;
+         height: 4px;
+         background: var(--testimonial-accent);
+         margin: 1rem auto;
+         border-radius: 2px;
+      }
+      
+      @media (max-width: 768px) {
+         .testimonials-hero__title {
+            font-size: 2.5rem;
+         }
+         
+         .testimonials-featured__card {
+            grid-template-columns: 1fr;
+         }
+         
+         .testimonials-featured__image {
+            min-height: 200px;
+         }
+         
+         .testimonials-featured__data {
+            padding: 2rem;
+         }
+         
+         .testimonials-grid__content {
+            grid-template-columns: 1fr;
+         }
+      }
+   </style>
+</head>
+<body>
+   <!--==================== HEADER ====================-->
+   <header class="header" id="header">
+      <nav class="nav container">
+         <a href="index.html" class="nav__logo">
+             VoyageVista
+         </a>
+
+         <div class="nav__menu" id="nav-menu">
+             <ul class="nav__list">
+                 <li class="nav__item">
+                     <a href="index.html" class="nav__link">Home</a>
+                 </li>
+
+                 <li class="nav__item">
+                     <a href="about-us.html" class="nav__link">About</a>
+                 </li>
+
+                 <li class="nav__item">
+                     <a href="index.html#popular" class="nav__link">Popular</a>
+                 </li>
+
+                 <li class="nav__item">
+                     <a href="index.html#explore" class="nav__link">Explore</a>
+                 </li>
+             </ul>
+
+             <!-- Close button -->
+             <div class="nav__close" id="nav-close">
+                 <i class="ri-close-line"></i>
+             </div>
+         </div>
+
+         <!-- Toggle Button -->
+         <div class="nav__toggle" id="nav-toggle">
+             <i class="ri-menu-fill"></i>
+         </div>
+      </nav>
+   </header>
+
+   <!--==================== MAIN ====================-->
+   <main class="main">
+      <section class="testimonials-hero">
+         <div class="testimonials-hero__container container">
+            <h1 class="testimonials-hero__title">Testimonials</h1>
+            <p class="testimonials-hero__subtitle">Hear what our users have to say about their experiences with VoyageVista</p>
+         </div>
+      </section>
+
+      <section class="testimonials-featured section">
+         <div class="testimonials-featured__container container">
+            <h2 class="section__title">Featured Stories</h2>
+            
+            <div class="testimonials-featured__content">
+               <div class="testimonials-featured__card">
+                  <div class="testimonials-featured__image">
+                     <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Sarah Johnson" class="testimonials-featured__img">
+                  </div>
+                  <div class="testimonials-featured__data">
+                     <div class="testimonials-featured__rating">
+                        <i class="ri-star-fill"></i>
+                        <i class="ri-star-fill"></i>
+                        <i class="ri-star-fill"></i>
+                        <i class="ri-star-fill"></i>
+                        <i class="ri-star-fill"></i>
+                     </div>
+                     <p class="testimonials-featured__description">
+                        "VoyageVista completely transformed how I plan my travels. I used to spend weeks researching destinations, 
+                        accommodations, and activities, but now I can do it all in one place. Their personalized recommendations 
+                        led me to hidden gems in Japan I would have never discovered on my own. The itinerary planning tool saved 
+                        me so much time, and the mobile app was a lifesaver during my trip when I needed offline access to my plans."
+                     </p>
+                     <div class="testimonials-featured__user">
+                        <h3 class="testimonials-featured__name">Sarah Johnson</h3>
+                        <span class="testimonials-featured__location">New York, USA</span>
+                     </div>
+                     <div class="testimonials-featured__trip">
+                        <span class="testimonials-featured__trip-title">Trip:</span>
+                        <span class="testimonials-featured__trip-name">Two weeks in Japan</span>
+                     </div>
+                  </div>
+               </div>
+
+               <div class="testimonials-featured__card">
+                  <div class="testimonials-featured__image">
+                     <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Marco Rossi" class="testimonials-featured__img">
+                  </div>
+                  <div class="testimonials-featured__data">
+                     <div class="testimonials-featured__rating">
+                        <i class="ri-star-fill"></i>
+                        <i class="ri-star-fill"></i>
+                        <i class="ri-star-fill"></i>
+                        <i class="ri-star-fill"></i>
+                        <i class="ri-star-fill"></i>
+                     </div>
+                     <p class="testimonials-featured__description">
+                        "As someone who travels frequently for both business and pleasure, I've tried numerous travel planning 
+                        apps, but VoyageVista stands out from the crowd. Their budget tracking feature helped me save over $500 
+                        on my last vacation by finding flight deals and suggesting affordable yet high-quality accommodations. 
+                        The customer service is exceptional too—when my flight was canceled, their support team helped me find 
+                        alternatives within minutes. I'm a customer for life!"
+                     </p>
+                     <div class="testimonials-featured__user">
+                        <h3 class="testimonials-featured__name">Marco Rossi</h3>
+                        <span class="testimonials-featured__location">Milan, Italy</span>
+                     </div>
+                     <div class="testimonials-featured__trip">
+                        <span class="testimonials-featured__trip-title">Trip:</span>
+                        <span class="testimonials-featured__trip-name">South America tour</span>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </section>
+
+      <section class="testimonials-grid section">
+         <div class="testimonials-grid__container container">
+            <h2 class="section__title">What Our Users Say</h2>
+            
+            <div class="testimonials-grid__content grid">
+               <div class="testimonials-grid__card">
+                  <div class="testimonials-grid__user">
+                     <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Emily Chen" class="testimonials-grid__user-img">
+                     <div>
+                        <h3 class="testimonials-grid__user-name">Emily Chen</h3>
+                        <span class="testimonials-grid__user-location">Vancouver, Canada</span>
+                     </div>
+                  </div>
+                  <div class="testimonials-grid__rating">
+                     <i class="ri-star-fill"></i>
+                     <i class="ri-star-fill"></i>
+                     <i class="ri-star-fill"></i>
+                     <i class="ri-star-fill"></i>
+                     <i class="ri-star-fill"></i>
+                  </div>
+                  <p class="testimonials-grid__description">
+                     "The AI travel assistant is like having a knowledgeable friend with you at all times. It helped me navigate 
+                     language barriers in Thailand and suggested amazing local restaurants I would have never found otherwise."
+                  </p>
+                  <div class="testimonials-grid__trip">
+                     <span class="testimonials-grid__trip-title">Trip:</span>
+                     <span class="testimonials-grid__trip-name">Southeast Asia backpacking</span>
+                  </div>
+               </div>
+
+               <div class="testimonials-grid__card">
+                  <div class="testimonials-grid__user">
+                     <img src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="James Wilson" class="testimonials-grid__user-img">
+                     <div>
+                        <h3 class="testimonials-grid__user-name">James Wilson</h3>
+                        <span class="testimonials-grid__user-location">London, UK</span>
+                     </div>
+                  </div>
+                  <div class="testimonials-grid__rating">
+                     <i class="ri-star-fill"></i>
+                     <i class="ri-star-fill"></i>
+                     <i class="ri-star-fill"></i>
+                     <i class="ri-star-fill"></i>
+                     <i class="ri-star-half-fill"></i>
+                  </div>
+                  <p class="testimonials-grid__description">
+                     "Planning a family vacation with three kids used to be a nightmare until I found VoyageVista. The family-friendly 
+                     filters helped us find suitable accommodations and activities that everyone enjoyed."
+                  </p>
+                  <div class="testimonials-grid__trip">
+                     <span class="testimonials-grid__trip-title">Trip:</span>
+                     <span class="testimonials-grid__trip-name">Family trip to Spain</span>
+                  </div>
+               </div>
+
+               <div class="testimonials-grid__card">
+                  <div class="testimonials-grid__user">
+                     <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Aisha Patel" class="testimonials-grid__user-img">
+                     <div>
+                        <h3 class="testimonials-grid__user-name">Aisha Patel</h3>
+                        <span class="testimonials-grid__user-location">Mumbai, India</span>
+                     </div>
+                  </div>
+                  <div class="testimonials-grid__rating">
+                     <i class="ri-star-fill"></i>
+                     <i class="ri-star-fill"></i>
+                     <i class="ri-star-fill"></i>
+                     <i class="ri-star-fill"></i>
+                     <i class="ri-star-fill"></i>
+                  </div>
+                  <p class="testimonials-grid__description">
+                     "As a solo female traveler, safety is my top priority. VoyageVista's safety information and neighborhood guides 
+                     helped me feel secure during my European adventure. The community tips from other solo travelers were invaluable."
+                  </p>
+                  <div class="testimonials-grid__trip">
+                     <span class="testimonials-grid__trip-title">Trip:</span>
+                     <span class="testimonials-grid__trip-name">Solo tour of Europe</span>
+                  </div>
+               </div>
+
+               <div class="testimonials-grid__card">
+                  <div class="testimonials-grid__user">
+                     <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Carlos Mendez" class="testimonials-grid__user-img">
+                     <div>
+                        <h3 class="testimonials-grid__user-name">Carlos Mendez</h3>
+                        <span class="testimonials-grid__user-location">Mexico City, Mexico</span>
+                     </div>
+                  </div>
+                  <div class="testimonials-grid__rating">
+                     <i class="ri-star-fill"></i>
+                     <i class="ri-star-fill"></i>
+                     <i class="ri-star-fill"></i>
+                     <i class="ri-star-fill"></i>
+                     <i class="ri-star-line"></i>
+                  </div>
+                  <p class="testimonials-grid__description">
+                     "The budget tracking feature is a game-changer. I was able to plan a luxury honeymoon without breaking the bank 
+                     by using VoyageVista's price alerts and seasonal recommendations."
+                  </p>
+                  <div class="testimonials-grid__trip">
+                     <span class="testimonials-grid__trip-title">Trip:</span>
+                     <span class="testimonials-grid__trip-name">Honeymoon in Bali</span>
+                  </div>
+               </div>
+
+               <div class="testimonials-grid__card">
+                  <div class="testimonials-grid__user">
+                     <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Sophie Martin" class="testimonials-grid__user-img">
+                     <div>
+                        <h3 class="testimonials-grid__user-name">Sophie Martin</h3>
+                        <span class="testimonials-grid__user-location">Paris, France</span>
+                     </div>
+                  </div>
+                  <div class="testimonials-grid__rating">
+                     <i class="ri-star-fill"></i>
+                     <i class="ri-star-fill"></i>
+                     <i class="ri-star-fill"></i>
+                     <i class="ri-star-fill"></i>
+                     <i class="ri-star-fill"></i>
+                  </div>
+                  <p class="testimonials-grid__description">
+                     "I love how VoyageVista integrates sustainable travel options. I was able to find eco-friendly accommodations 
+                     and carbon offset my flights, which aligned perfectly with my values as an environmentally conscious traveler."
+                  </p>
+                  <div class="testimonials-grid__trip">
+                     <span class="testimonials-grid__trip-title">Trip:</span>
+                     <span class="testimonials-grid__trip-name">Costa Rica eco-tour</span>
+                  </div>
+               </div>
+
+               <div class="testimonials-grid__card">
+                  <div class="testimonials-grid__user">
+                     <img src="https://images.unsplash.com/photo-1542178243-bc20204b769f?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="David Kim" class="testimonials-grid__user-img">
+                     <div>
+                        <h3 class="testimonials-grid__user-name">David Kim</h3>
+                        <span class="testimonials-grid__user-location">Seoul, South Korea</span>
+                     </div>
+                  </div>
+                  <div class="testimonials-grid__rating">
+                     <i class="ri-star-fill"></i>
+                     <i class="ri-star-fill"></i>
+                     <i class="ri-star-fill"></i>
+                     <i class="ri-star-fill"></i>
+                     <i class="ri-star-half-fill"></i>
+                  </div>
+                  <p class="testimonials-grid__description">
+                     "As a business traveler, efficiency is key. VoyageVista's integration with my calendar and expense tracking 
+                     has streamlined my work trips. The airport lounge access through the premium subscription is worth every penny."
+                  </p>
+                  <div class="testimonials-grid__trip">
+                     <span class="testimonials-grid__trip-title">Trip:</span>
+                     <span class="testimonials-grid__trip-name">Business trip to New York</span>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </section>
+   </main>
+
+   <!--==================== FOOTER ====================-->
+   <footer class="footer">
+      <div class="footer__container container grid">
+         <div class="footer__content">
+            <a href="index.html" class="footer__logo">
+               VoyageVista
+            </a>
+            <p class="footer__description">
+               Discover your perfect getaway with <br> 
+               our travel planning platform.
+            </p>
+         </div>
+
+         <div class="footer__content">
+            <h3 class="footer__title">Company</h3>
+            <ul class="footer__links">
+               <li><a href="about.html" class="footer__link">About Us</a></li>
+               <li><a href="COmpanytestimonials.html" class="footer__link">Testimonials</a></li>
+               <li><a href="#" class="footer__link">Careers</a></li>
+               <li><a href="#" class="footer__link">Press</a></li>
+            </ul>
+         </div>
+
+         <div class="footer__content">
+            <h3 class="footer__title">Support</h3>
+            <ul class="footer__links">
+               <li><a href="Companyfaqs.html" class="footer__link">FAQs</a></li>
+               <li><a href="Contactpage.html" class="footer__link">Contact Us</a></li>
+               <li><a href="supportpageeeee.html" class="footer__link">Privacy Policy</a></li>
+               <li><a href="supportpageeeee.html" class="footer__link">Terms of Service</a></li>
+            </ul>
+         </div>
+
+         <div class="footer__content">
+            <h3 class="footer__title">Follow Us</h3>
+            <ul class="footer__social">
+               <li>
+                  <a href="#" class="footer__social-link">
+                     <i class="ri-facebook-fill"></i>
+                  </a>
+               </li>
+               <li>
+                  <a href="#" class="footer__social-link">
+                     <i class="ri-instagram-line"></i>
+                  </a>
+               </li>
+               <li>
+                  <a href="#" class="footer__social-link">
+                     <i class="ri-twitter-fill"></i>
+                  </a>
+               </li>
+               <li>
+                  <a href="#" class="footer__social-link">
+                     <i class="ri-youtube-fill"></i>
+                  </a>
+               </li>
+            </ul>
+         </div>
+      </div>
+
+      <div class="footer__info container">
+         <span class="footer__copy">
+            &#169; VoyageVista. All rights reserved
+         </span>
+      </div>
+   </footer>
+
+   <!--========== SCROLL UP ==========-->
+   <a href="#" class="scrollup" id="scroll-up">
+      <i class="ri-arrow-up-line"></i>
+   </a>
+
+   <!--=============== SCROLL REVEAL ===============-->
+   <script src="assets/js/scrollreveal.min.js"></script>
+
+   <!--=============== MAIN JS ===============-->
+   <script src="assets/js/main.js"></script>
+</body>
+</html>

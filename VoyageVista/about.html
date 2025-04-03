@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+   <!--=============== FAVICON ===============-->
+   <link rel="shortcut icon" href="assets/img/favicon.png" type="image/x-icon">
+
+   <!--=============== REMIXICONS ===============-->
+   <link href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet">
+
+   <!--=============== CSS ===============-->
+   <link rel="stylesheet" href="assets/css/styles.css">
+   <link rel="stylesheet" href="assets/css/about-us.css">
+
+   <title>About Us - VoyageVista</title>
+   
+   <style>
+      /* Enhanced About Us Page Styles */
+      :root {
+         --about-primary: #2563eb;
+         --about-secondary: #1e40af;
+         --about-accent: #f59e0b;
+         --about-light: #f8fafc;
+         --about-dark: #1e293b;
+         --about-gray: #64748b;
+      }
+      
+      .about-hero {
+         background: linear-gradient(135deg, rgba(37, 99, 235, 0.9) 0%, rgba(30, 64, 175, 0.0) 100%), 
+                     url('https://images.unsplash.com/photo-1527631746610-bca00a040d60?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+         color: white;
+         padding: 8rem 0 6rem;
+         text-align: center;
+         position: relative;
+         margin-bottom: 4rem;
+      }
+      
+      .about-hero__container {
+         position: relative;
+         z-index: 2;
+      }
+      
+      .about-hero__title {
+         font-size: 3.5rem;
+         margin-bottom: 1rem;
+         text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+      }
+      
+      .about-hero__subtitle {
+         font-size: 1.5rem;
+         max-width: 700px;
+         margin: 0 auto;
+         opacity: 0.9;
+         font-weight: 300;
+      }
+      
+      .about-content {
+         padding: 5rem 0;
+         background-color: var(--about-light);
+      }
+      
+      .about-content__container {
+         max-width: 1200px;
+         display: grid;
+         grid-template-columns: 1fr 1fr;
+         gap: 4rem;
+         align-items: center;
+      }
+      
+      .about-content__data {
+         padding-right: 2rem;
+      }
+      
+      .about-content__image {
+         position: relative;
+         border-radius: 1rem;
+         overflow: hidden;
+         box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
+      }
+      
+      .about-content__img {
+         width: 100%;
+         height: auto;
+         display: block;
+         transition: transform 0.5s ease;
+      }
+      
+      .about-content__image:hover .about-content__img {
+         transform: scale(1.05);
+      }
+      
+      .about-content__description {
+         font-size: 1.1rem;
+         line-height: 1.8;
+         color: var(--about-gray);
+         margin-bottom: 1.5rem;
+      }
+      
+      .mission {
+         padding: 5rem 0;
+         background-color: white;
+      }
+      
+      .mission__container {
+         max-width: 1200px;
+         display: grid;
+         grid-template-columns: 1fr 1fr;
+         gap: 4rem;
+         align-items: center;
+      }
+      
+      .mission__image {
+         order: 2;
+         position: relative;
+         border-radius: 1rem;
+         overflow: hidden;
+         box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
+      }
+      
+      .mission__img {
+         width: 100%;
+         height: auto;
+         display: block;
+         transition: transform 0.5s ease;
+      }
+      
+      .mission__image:hover .mission__img {
+         transform: scale(1.05);
+      }
+      
+      .mission__data {
+         order: 1;
+         padding-left: 2rem;
+      }
+      
+      .mission__description {
+         font-size: 1.1rem;
+         line-height: 1.8;
+         color: var(--about-gray);
+         margin-bottom: 1.5rem;
+      }
+      
+      .investor {
+         padding: 5rem 0;
+         background-color: var(--about-light);
+      }
+      
+      .investor__container {
+         max-width: 1200px;
+      }
+      
+      .investor__content {
+         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+         gap: 2rem;
+         margin-top: 3rem;
+      }
+      
+      .investor__card {
+         background: white;
+         border-radius: 1rem;
+         padding: 2.5rem 2rem;
+         box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
+         transition: all 0.3s ease;
+         text-align: center;
+      }
+      
+      .investor__card:hover {
+         transform: translateY(-10px);
+         box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
+      }
+      
+      .investor__icon {
+         font-size: 3rem;
+         color: var(--about-primary);
+         margin-bottom: 1.5rem;
+      }
+      
+      .investor__title {
+         font-size: 1.5rem;
+         margin-bottom: 1rem;
+         color: var(--about-dark);
+      }
+      
+      .investor__description {
+         font-size: 1rem;
+         line-height: 1.6;
+         color: var(--about-gray);
+         margin-bottom: 1.5rem;
+      }
+      
+      .investor__link {
+         color: var(--about-primary);
+         font-weight: 600;
+         display: inline-flex;
+         align-items: center;
+         gap: 0.5rem;
+         transition: color 0.3s ease;
+      }
+      
+      .investor__link:hover {
+         color: var(--about-secondary);
+      }
+      
+      .resources {
+         padding: 5rem 0;
+         background-color: white;
+      }
+      
+      .resources__container {
+         max-width: 1200px;
+      }
+      
+      .resources__content {
+         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+         gap: 2rem;
+         margin-top: 3rem;
+      }
+      
+      .resources__card {
+         background: white;
+         border-radius: 1rem;
+         overflow: hidden;
+         box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
+         transition: all 0.3s ease;
+      }
+      
+      .resources__card:hover {
+         transform: translateY(-10px);
+         box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
+      }
+      
+      .resources__img {
+         width: 100%;
+         height: 200px;
+         object-fit: cover;
+         display: block;
+      }
+      
+      .resources__text {
+         padding: 1.5rem;
+      }
+      
+      .resources__title {
+         font-size: 1.25rem;
+         margin-bottom: 1rem;
+         color: var(--about-dark);
+      }
+      
+      .resources__description {
+         font-size: 1rem;
+         line-height: 1.6;
+         color: var(--about-gray);
+         margin-bottom: 1.5rem;
+      }
+      
+      .resources__link {
+         color: var(--about-primary);
+         font-weight: 600;
+         display: inline-flex;
+         align-items: center;
+         gap: 0.5rem;
+         transition: color 0.3s ease;
+      }
+      
+      .resources__link:hover {
+         color: var(--about-secondary);
+      }
+      
+      .contact-info {
+         padding: 5rem 0;
+         background-color: var(--about-light);
+      }
+      
+      .contact-info__container {
+         max-width: 1200px;
+      }
+      
+      .contact-info__content {
+         grid-template-columns: 1fr 1fr;
+         gap: 4rem;
+         margin-top: 3rem;
+      }
+      
+      .contact-info__title {
+         font-size: 1.5rem;
+         margin-bottom: 1.5rem;
+         color: var(--about-dark);
+      }
+      
+      .contact-info__address, .contact-info__item {
+         font-size: 1.1rem;
+         line-height: 1.8;
+         color: var(--about-gray);
+         margin-bottom: 1.5rem;
+         display: flex;
+         align-items: flex-start;
+         gap: 1rem;
+      }
+      
+      .contact-info__map {
+         border-radius: 1rem;
+         overflow: hidden;
+         box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
+         height: 100%;
+      }
+      
+      .contact-info__map-img {
+         width: 100%;
+         height: 100%;
+         object-fit: cover;
+      }
+      
+      /* New Developers Section Styles */
+      .developers {
+         padding: 5rem 0;
+         background-color: white;
+      }
+      
+      .developers__container {
+         max-width: 1200px;
+         margin: 0 auto;
+      }
+      
+      .developers__content {
+         display: grid;
+         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+         gap: 2rem;
+         margin-top: 3rem;
+      }
+      
+      .developer__card {
+         background: var(--about-light);
+         border-radius: 1rem;
+         padding: 2rem;
+         text-align: center;
+         box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
+         transition: all 0.3s ease;
+      }
+      
+      .developer__card:hover {
+         transform: translateY(-5px);
+         box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
+      }
+      
+      .developer__icon {
+         font-size: 2.5rem;
+         color: var(--about-primary);
+         margin-bottom: 1rem;
+      }
+      
+      .developer__name {
+         font-size: 1.5rem;
+         margin-bottom: 0.5rem;
+         color: var(--about-dark);
+      }
+      
+      .developer__role {
+         font-size: 1rem;
+         color: var(--about-gray);
+         margin-bottom: 1.5rem;
+      }
+      
+      .developer__link {
+         display: inline-block;
+         background-color: var(--about-primary);
+         color: white;
+         padding: 0.75rem 1.5rem;
+         border-radius: 0.5rem;
+         font-weight: 600;
+         transition: all 0.3s ease;
+      }
+      
+      .developer__link:hover {
+         background-color: var(--about-secondary);
+         transform: translateY(-2px);
+      }
+      
+      .section__title {
+         text-align: center;
+         font-size: 2.5rem;
+         color: var(--about-dark);
+         margin-bottom: 1rem;
+         position: relative;
+      }
+      
+      .section__title:after {
+         content: '';
+         display: block;
+         width: 80px;
+         height: 4px;
+         background: var(--about-accent);
+         margin: 1rem auto;
+         border-radius: 2px;
+      }
+      
+      @media (max-width: 768px) {
+         .about-hero__title {
+            font-size: 2.5rem;
+         }
+         
+         .about-hero__subtitle {
+            font-size: 1.25rem;
+         }
+         
+         .about-content__container,
+         .mission__container,
+         .contact-info__content {
+            grid-template-columns: 1fr;
+            gap: 2rem;
+         }
+         
+         .mission__image {
+            order: 1;
+         }
+         
+         .mission__data {
+            order: 2;
+            padding-left: 0;
+         }
+         
+         .about-content__data {
+            padding-right: 0;
+         }
+      }
+   </style>
+</head>
+<body>
+   <!--==================== HEADER ====================-->
+   <header class="header" id="header">
+      <nav class="nav container">
+         <a href="index.html" class="nav__logo">
+             VoyageVista
+         </a>
+
+         <div class="nav__menu" id="nav-menu">
+             <ul class="nav__list">
+                 <li class="nav__item">
+                     <a href="index.html" class="nav__link">Home</a>
+                 </li>
+
+                 <li class="nav__item">
+                     <a href="about.html" class="nav__link active-link">About</a>
+                 </li>
+
+                 <li class="nav__item">
+                     <a href="index.html#popular" class="nav__link">Popular</a>
+                 </li>
+
+                 <li class="nav__item">
+                     <a href="index.html#explore" class="nav__link">Explore</a>
+                 </li>
+             </ul>
+
+             <!-- Close button -->
+             <div class="nav__close" id="nav-close">
+                 <i class="ri-close-line"></i>
+             </div>
+         </div>
+
+         <!-- Toggle Button -->
+         <div class="nav__toggle" id="nav-toggle">
+             <i class="ri-menu-fill"></i>
+         </div>
+      </nav>
+   </header>
+
+   <!--==================== MAIN ====================-->
+   <main class="main">
+      <section class="about-hero">
+         <div class="about-hero__container container">
+            <h1 class="about-hero__title">About VoyageVista</h1>
+            <p class="about-hero__subtitle">Discover the story behind your favorite travel companion</p>
+         </div>
+      </section>
+
+      <section class="about-content section">
+         <div class="about-content__container container grid">
+            <div class="about-content__data">
+               <h2 class="section__title">Our Story</h2>
+               <p class="about-content__description">
+                  Founded in 2018, VoyageVista began with a simple mission: to make travel planning seamless and enjoyable. 
+                  What started as a small team of travel enthusiasts has grown into a global platform helping millions of 
+                  travelers discover and explore the world's most beautiful destinations.
+               </p>
+               <p class="about-content__description">
+                  Our platform combines cutting-edge technology with personalized recommendations to create unforgettable 
+                  travel experiences. We believe that travel should be accessible to everyone, and we're committed to 
+                  providing tools and resources that make planning your next adventure as exciting as the journey itself.
+               </p>
+            </div>
+
+            <div class="about-content__image">
+               <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="VoyageVista team" class="about-content__img">
+            </div>
+         </div>
+      </section>
+
+      <section class="mission section">
+         <div class="mission__container container grid">
+            <div class="mission__image">
+               <img src="https://images.unsplash.com/photo-1506929562872-bb421503ef21?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Our mission" class="mission__img">
+            </div>
+
+            <div class="mission__data">
+               <h2 class="section__title">Our Mission</h2>
+               <p class="mission__description">
+                  At VoyageVista, we're on a mission to transform how people experience the world. We believe travel 
+                  has the power to connect cultures, broaden perspectives, and create lasting memories. Our platform 
+                  is designed to inspire wanderlust and make travel planning effortless.
+               </p>
+               <p class="mission__description">
+                  We're committed to sustainable tourism practices and supporting local communities. By partnering with 
+                  eco-friendly accommodations and promoting responsible travel, we aim to preserve the world's natural 
+                  beauty for future generations of explorers.
+               </p>
+            </div>
+         </div>
+      </section>
+
+      <section class="investor section">
+         <div class="investor__container container">
+            <h2 class="section__title">Investor Relations</h2>
+            <div class="investor__content grid">
+               <div class="investor__card">
+                  <i class="ri-line-chart-line investor__icon"></i>
+                  <h3 class="investor__title">Financial Reports</h3>
+                  <p class="investor__description">
+                     Access our quarterly and annual financial reports, investor presentations, and SEC filings.
+                  </p>
+                  <a href="#" class="investor__link">View Reports <i class="ri-arrow-right-line"></i></a>
+               </div>
+
+               <div class="investor__card">
+                  <i class="ri-calendar-event-line investor__icon"></i>
+                  <h3 class="investor__title">Events & Presentations</h3>
+                  <p class="investor__description">
+                     Stay updated with upcoming investor events, conferences, and earnings calls.
+                  </p>
+                  <a href="#" class="investor__link">View Calendar <i class="ri-arrow-right-line"></i></a>
+               </div>
+
+               <div class="investor__card">
+                  <i class="ri-government-line investor__icon"></i>
+                  <h3 class="investor__title">Governance</h3>
+                  <p class="investor__description">
+                     Learn about our leadership team, board of directors, and corporate governance practices.
+                  </p>
+                  <a href="#" class="investor__link">Learn More <i class="ri-arrow-right-line"></i></a>
+               </div>
+            </div>
+         </div>
+      </section>
+
+      <section class="resources section">
+         <div class="resources__container container">
+            <h2 class="section__title">Resources</h2>
+            <div class="resources__content grid">
+               <div class="resources__card">
+                  <img src="https://images.unsplash.com/photo-1501555088652-021faa106b9b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Travel guides" class="resources__img">
+                  <div class="resources__text">
+                     <h3 class="resources__title">Travel Guides</h3>
+                     <p class="resources__description">
+                        Comprehensive guides to help you navigate destinations around the world.
+                     </p>
+                     <a href="#" class="resources__link">Explore Guides <i class="ri-arrow-right-line"></i></a>
+                  </div>
+               </div>
+
+               <div class="resources__card">
+                  <img src="https://images.unsplash.com/photo-1503220317375-aaad61436b1b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Travel tips" class="resources__img">
+                  <div class="resources__text">
+                     <h3 class="resources__title">Travel Tips</h3>
+                     <p class="resources__description">
+                        Expert advice on packing, budgeting, and making the most of your travels.
+                     </p>
+                     <a href="#" class="resources__link">Read Tips <i class="ri-arrow-right-line"></i></a>
+                  </div>
+               </div>
+
+               <div class="resources__card">
+                  <img src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Destination insights" class="resources__img">
+                  <div class="resources__text">
+                     <h3 class="resources__title">Destination Insights</h3>
+                     <p class="resources__description">
+                        Data-driven insights on trending destinations and travel patterns.
+                     </p>
+                     <a href="#" class="resources__link">View Insights <i class="ri-arrow-right-line"></i></a>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </section>
+
+      <!-- New Developers Section -->
+      <section class="developers section">
+         <div class="developers__container container">
+            <h2 class="section__title">Developed By</h2>
+            <div class="developers__content grid">
+               <div class="developer__card">
+                  <i class="ri-user-3-line developer__icon"></i>
+                  <h3 class="developer__name">Developer 1</h3>
+                  <p class="developer__role">Developer</p>
+                  <a href="resume1.html" class="developer__link">View Resume</a>
+               </div>
+
+               <div class="developer__card">
+                  <i class="ri-user-3-line developer__icon"></i>
+                  <h3 class="developer__name">Developer 2</h3>
+                  <p class="developer__role">Developer</p>
+                  <a href="resume2.html" class="developer__link">View Resume</a>
+               </div>
+
+               <div class="developer__card">
+                  <i class="ri-user-3-line developer__icon"></i>
+                  <h3 class="developer__name">Developer 3</h3>
+                  <p class="developer__role">Developer</p>
+                  <a href="resume3.html" class="developer__link">View Resume</a>
+               </div>
+            </div>
+         </div>
+      </section>
+
+      <section class="contact-info section">
+         <div class="contact-info__container container">
+            <h2 class="section__title">Contact Information</h2>
+            <div class="contact-info__content grid">
+               <div class="contact-info__data">
+                  <div class="contact-info__location">
+                     <h3 class="contact-info__title">Headquarters</h3>
+                     <p class="contact-info__address">
+                        <i class="ri-map-pin-line"></i> Amrtitanagar PO,Amrita Vishwa Vidyapeetham<br>
+                        Ettimadal , Coimbatore,Tamil Nadu-641112<br>
+                        INDIA
+                     </p>
+                  </div>
+
+                  <div class="contact-info__details">
+                     <h3 class="contact-info__title">Get in Touch</h3>
+                     <p class="contact-info__item">
+                        <i class="ri-phone-line"></i> +91 9373216209
+                     </p>
+                     <p class="contact-info__item">
+                        <i class="ri-mail-line"></i> info@voyagevista.com
+                     </p>
+                     <p class="contact-info__item">
+                        <i class="ri-time-line"></i> Monday - Friday: 9AM - 6PM (PST)
+                     </p>
+                  </div>
+               </div>
+
+               <div class="contact-info__map">
+                  <img src="https://webfiles.amrita.edu/2020/05/2lEO2RAv-amrita-vishwa-vidyapeetham-coimbatore-campus-dron-image-01-1.jpg" alt="Our Campus Image" class="contact-info__map-img">
+               </div>
+            </div>
+         </div>
+      </section>
+   </main>
+
+   <!--==================== FOOTER ====================-->
+   <footer class="footer">
+      <div class="footer__container container grid">
+         <div class="footer__content">
+            <a href="index.html" class="footer__logo">
+               VoyageVista
+            </a>
+            <p class="footer__description">
+               Discover your perfect getaway with <br> 
+               our travel planning platform.
+            </p>
+         </div>
+
+         <div class="footer__content">
+            <h3 class="footer__title">Company</h3>
+            <ul class="footer__links">
+               <li><a href="about.html" class="footer__link">About Us</a></li>
+               <li><a href="COmpanytestimonials.html" class="footer__link">Testimonials</a></li>
+               <li><a href="#" class="footer__link">Careers</a></li>
+               <li><a href="#" class="footer__link">Press</a></li>
+            </ul>
+         </div>
+
+         <div class="footer__content">
+            <h3 class="footer__title">Support</h3>
+            <ul class="footer__links">
+               <li><a href="Companyfaqs.html" class="footer__link">FAQs</a></li>
+               <li><a href="Contactpage.html" class="footer__link">Contact Us</a></li>
+               <li><a href="supportpageeeee.html" class="footer__link">Privacy Policy</a></li>
+               <li><a href="supportpageeeee.html" class="footer__link">Terms of Service</a></li>
+            </ul>
+         </div>
+
+         <div class="footer__content">
+            <h3 class="footer__title">Follow Us</h3>
+            <ul class="footer__social">
+               <li>
+                  <a href="#" class="footer__social-link">
+                     <i class="ri-facebook-fill"></i>
+                  </a>
+               </li>
+               <li>
+                  <a href="#" class="footer__social-link">
+                     <i class="ri-instagram-line"></i>
+                  </a>
+               </li>
+               <li>
+                  <a href="#" class="footer__social-link">
+                     <i class="ri-twitter-fill"></i>
+                  </a>
+               </li>
+               <li>
+                  <a href="#" class="footer__social-link">
+                     <i class="ri-youtube-fill"></i>
+                  </a>
+               </li>
+            </ul>
+         </div>
+      </div>
+
+      <div class="footer__info container">
+         <span class="footer__copy">
+            &#169; VoyageVista. All rights reserved
+         </span>
+      </div>
+   </footer>
+
+   <!--========== SCROLL UP ==========-->
+   <a href="#" class="scrollup" id="scroll-up">
+      <i class="ri-arrow-up-line"></i>
+   </a>
+
+   <!--=============== SCROLL REVEAL ===============-->
+   <script src="assets/js/scrollreveal.min.js"></script>
+
+   <!--=============== MAIN JS ===============-->
+   <script src="assets/js/main.js"></script>
+</body>
+</html>

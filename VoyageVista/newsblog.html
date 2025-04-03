@@ -1,0 +1,1291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+   <!--=============== FAVICON ===============-->
+   <link rel="shortcut icon" href="https://images.unsplash.com/photo-1506197603052-3cc9c3a201bd?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" type="image/x-icon">
+
+   <!--=============== REMIXICONS ===============-->
+   <link href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet">
+
+   <!--=============== GOOGLE FONTS ===============-->
+   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+   <title>News & Blog - VoyageVista</title>
+   
+   <style>
+      /*=============== BASE ===============*/
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: 'Poppins', sans-serif;
+        background-color: #f9f9f9;
+        color: #333;
+        line-height: 1.6;
+      }
+
+      h1, h2, h3, h4 {
+        font-family: 'Playfair Display', serif;
+        font-weight: 600;
+        color: #222;
+      }
+
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      img {
+        max-width: 100%;
+        height: auto;
+      }
+
+      ul {
+        list-style: none;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 1.5rem;
+      }
+
+      .section {
+        padding: 5rem 0 2rem;
+      }
+
+      .section__title {
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
+        text-align: center;
+        position: relative;
+      }
+
+      .section__title::after {
+        content: '';
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 3px;
+        background: linear-gradient(90deg, #ff7e5f, #feb47b);
+      }
+
+      .grid {
+        display: grid;
+        gap: 1.5rem;
+      }
+
+      .button {
+        display: inline-block;
+        background: linear-gradient(90deg, #ff7e5f, #feb47b);
+        color: white;
+        padding: 0.8rem 1.5rem;
+        border-radius: 30px;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        border: none;
+        cursor: pointer;
+      }
+
+      .button:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 20px rgba(255, 126, 95, 0.2);
+      }
+
+      /*=============== HEADER ===============*/
+      .header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background-color: rgba(255, 255, 255, 0.95);
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        z-index: 100;
+        transition: all 0.3s ease;
+      }
+
+      .nav {
+        height: 4.5rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .nav__logo {
+        font-family: 'Playfair Display', serif;
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: #222;
+      }
+
+      .nav__menu {
+        display: flex;
+      }
+
+      .nav__list {
+        display: flex;
+        align-items: center;
+        column-gap: 2.5rem;
+      }
+
+      .nav__link {
+        font-weight: 500;
+        position: relative;
+      }
+
+      .nav__link::after {
+        content: '';
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: linear-gradient(90deg, #ff7e5f, #feb47b);
+        transition: width 0.3s ease;
+      }
+
+      .nav__link:hover::after {
+        width: 100%;
+      }
+
+      .nav__toggle, .nav__close {
+        font-size: 1.5rem;
+        cursor: pointer;
+        display: none;
+      }
+
+      /* Active link */
+      .active-link {
+        color: #ff7e5f;
+      }
+
+      /* Change background header */
+      .scroll-header {
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      /*=============== BLOG HERO ===============*/
+      .blog-hero {
+        height: 500px;
+        background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+                    url('https://images.unsplash.com/photo-1499678329028-101435549a4e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        align-items: center;
+        text-align: center;
+        color: white;
+        margin-top: 4.5rem;
+      }
+
+      .blog-hero__container {
+        width: 100%;
+      }
+
+      .blog-hero__title {
+        font-size: 3.5rem;
+        margin-bottom: 1rem;
+        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+      }
+
+      .blog-hero__subtitle {
+        font-size: 1.2rem;
+        max-width: 700px;
+        margin: 0 auto;
+      }
+
+      /*=============== BLOG FILTER ===============*/
+      .blog-filter {
+        background-color: white;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+        padding: 2rem 0;
+        margin-top: -50px;
+        border-radius: 10px;
+        position: relative;
+        z-index: 1;
+      }
+
+      .blog-filter__container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .blog-filter__search {
+        display: flex;
+        width: 100%;
+        max-width: 600px;
+        margin-bottom: 2rem;
+      }
+
+      .blog-filter__input {
+        flex: 1;
+        padding: 0.8rem 1.5rem;
+        border: 1px solid #ddd;
+        border-radius: 30px 0 0 30px;
+        font-size: 1rem;
+        outline: none;
+        transition: all 0.3s ease;
+      }
+
+      .blog-filter__input:focus {
+        border-color: #ff7e5f;
+      }
+
+      .blog-filter__button {
+        background: linear-gradient(90deg, #ff7e5f, #feb47b);
+        color: white;
+        border: none;
+        padding: 0 1.5rem;
+        border-radius: 0 30px 30px 0;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .blog-filter__button:hover {
+        background: linear-gradient(90deg, #feb47b, #ff7e5f);
+      }
+
+      .blog-filter__categories {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.8rem;
+      }
+
+      .blog-filter__category {
+        background-color: #f5f5f5;
+        color: #555;
+        border: none;
+        padding: 0.5rem 1.2rem;
+        border-radius: 30px;
+        font-size: 0.9rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .blog-filter__category:hover {
+        background-color: #ff7e5f;
+        color: white;
+      }
+
+      .blog-filter__category.active {
+        background: linear-gradient(90deg, #ff7e5f, #feb47b);
+        color: white;
+      }
+
+      /*=============== FEATURED POSTS ===============*/
+      .featured-posts__content {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+        gap: 2rem;
+      }
+
+      .featured-posts__card {
+        background-color: white;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .featured-posts__card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+      }
+
+      .featured-posts__image {
+        position: relative;
+        height: 300px;
+        overflow: hidden;
+      }
+
+      .featured-posts__img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+      }
+
+      .featured-posts__card:hover .featured-posts__img {
+        transform: scale(1.05);
+      }
+
+      .featured-posts__category {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        background: linear-gradient(90deg, #ff7e5f, #feb47b);
+        color: white;
+        padding: 0.3rem 0.8rem;
+        border-radius: 30px;
+        font-size: 0.8rem;
+        font-weight: 500;
+      }
+
+      .featured-posts__data {
+        padding: 1.5rem;
+      }
+
+      .featured-posts__title {
+        font-size: 1.5rem;
+        margin-bottom: 0.8rem;
+        transition: color 0.3s ease;
+      }
+
+      .featured-posts__title a:hover {
+        color: #ff7e5f;
+      }
+
+      .featured-posts__description {
+        color: #666;
+        margin-bottom: 1.5rem;
+      }
+
+      .featured-posts__footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .featured-posts__author {
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+      }
+
+      .featured-posts__author-img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+
+      .featured-posts__author-name {
+        font-weight: 500;
+      }
+
+      .featured-posts__date {
+        color: #888;
+        font-size: 0.9rem;
+      }
+
+      /*=============== LATEST POSTS ===============*/
+      .latest-posts__content {
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      }
+
+      .latest-posts__card {
+        background-color: white;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .latest-posts__card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+      }
+
+      .latest-posts__image {
+        position: relative;
+        height: 200px;
+        overflow: hidden;
+      }
+
+      .latest-posts__img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+      }
+
+      .latest-posts__card:hover .latest-posts__img {
+        transform: scale(1.05);
+      }
+
+      .latest-posts__category {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        background: linear-gradient(90deg, #ff7e5f, #feb47b);
+        color: white;
+        padding: 0.3rem 0.8rem;
+        border-radius: 30px;
+        font-size: 0.7rem;
+        font-weight: 500;
+      }
+
+      .latest-posts__data {
+        padding: 1.2rem;
+      }
+
+      .latest-posts__title {
+        font-size: 1.2rem;
+        margin-bottom: 0.8rem;
+        transition: color 0.3s ease;
+      }
+
+      .latest-posts__title a:hover {
+        color: #ff7e5f;
+      }
+
+      .latest-posts__description {
+        color: #666;
+        font-size: 0.9rem;
+        margin-bottom: 1.2rem;
+      }
+
+      .latest-posts__footer {
+        display: flex;
+        justify-content: space-between;
+        color: #888;
+        font-size: 0.8rem;
+      }
+
+      .latest-posts__date, .latest-posts__comments {
+        display: flex;
+        align-items: center;
+        gap: 0.3rem;
+      }
+
+      .latest-posts__pagination {
+        display: flex;
+        justify-content: center;
+        gap: 0.5rem;
+        margin-top: 3rem;
+      }
+
+      .latest-posts__pagination-button {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        border: 1px solid #ddd;
+        background-color: white;
+        color: #555;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .latest-posts__pagination-button:hover {
+        background-color: #ff7e5f;
+        color: white;
+        border-color: #ff7e5f;
+      }
+
+      .latest-posts__pagination-button.active {
+        background: linear-gradient(90deg, #ff7e5f, #feb47b);
+        color: white;
+        border: none;
+      }
+
+      /*=============== DESTINATION GUIDES ===============*/
+      .destination-guides__description {
+        text-align: center;
+        max-width: 700px;
+        margin: 0 auto 2rem;
+        color: #666;
+      }
+
+      .destination-guides__content {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      }
+
+      .destination-guides__card {
+        position: relative;
+        height: 300px;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+      }
+
+      .destination-guides__card:hover {
+        transform: translateY(-10px);
+      }
+
+      .destination-guides__img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .destination-guides__data {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 1.5rem;
+        background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+        color: white;
+      }
+
+      .destination-guides__title {
+        font-size: 1.3rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .destination-guides__info {
+        font-size: 0.9rem;
+        margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 0.3rem;
+      }
+
+      .destination-guides__button {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.3rem;
+        color: white;
+        font-weight: 500;
+        transition: color 0.3s ease;
+      }
+
+      .destination-guides__button:hover {
+        color: #ff7e5f;
+      }
+
+      .destination-guides__more-button {
+        display: block;
+        width: fit-content;
+        margin: 3rem auto 0;
+      }
+
+      /*=============== NEWSLETTER ===============*/
+      .newsletter {
+        background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                    url('https://images.unsplash.com/photo-1488085061387-422e29b40080?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+        background-size: cover;
+        background-position: center;
+        color: white;
+        text-align: center;
+        padding: 4rem 0;
+      }
+
+      .newsletter__content {
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      .newsletter__title {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+      }
+
+      .newsletter__description {
+        margin-bottom: 2rem;
+      }
+
+      .newsletter__form {
+        display: flex;
+        gap: 0.5rem;
+      }
+
+      .newsletter__input {
+        flex: 1;
+        padding: 0.8rem 1.5rem;
+        border-radius: 30px;
+        border: none;
+        outline: none;
+        font-size: 1rem;
+      }
+
+      /*=============== FOOTER ===============*/
+      .footer {
+        background-color: #222;
+        color: #ddd;
+        padding: 4rem 0 2rem;
+      }
+
+      .footer__container {
+        row-gap: 3rem;
+      }
+
+      .footer__logo {
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        display: inline-block;
+      }
+
+      .footer__decsription {
+        margin-bottom: 1.5rem;
+      }
+
+      .footer__data {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 2rem;
+      }
+
+      .footer__title {
+        font-size: 1.1rem;
+        margin-bottom: 1rem;
+        color: white;
+      }
+
+      .footer__links {
+        display: grid;
+        row-gap: 0.8rem;
+      }
+
+      .footer__link {
+        color: #aaa;
+        transition: color 0.3s ease;
+      }
+
+      .footer__link:hover {
+        color: #ff7e5f;
+      }
+
+      .footer__group {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 3rem;
+        padding-top: 2rem;
+        border-top: 1px solid #444;
+      }
+
+      .footer__social {
+        display: flex;
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .footer__social-link {
+        color: white;
+        font-size: 1.2rem;
+        transition: color 0.3s ease;
+      }
+
+      .footer__social-link:hover {
+        color: #ff7e5f;
+      }
+
+      .footer__copy {
+        font-size: 0.9rem;
+        color: #888;
+      }
+
+      /*=============== SCROLL UP ===============*/
+      .scrollup {
+        position: fixed;
+        right: 1rem;
+        bottom: -30%;
+        background: linear-gradient(90deg, #ff7e5f, #feb47b);
+        color: white;
+        padding: 0.5rem;
+        border-radius: 50%;
+        display: inline-flex;
+        font-size: 1.2rem;
+        z-index: 10;
+        opacity: 0.8;
+        transition: all 0.3s ease;
+      }
+
+      .scrollup:hover {
+        opacity: 1;
+        transform: translateY(-5px);
+      }
+
+      /* Show Scroll Up */
+      .show-scroll {
+        bottom: 3rem;
+      }
+
+      /*=============== BREAKPOINTS ===============*/
+      /* For large devices */
+      @media screen and (max-width: 992px) {
+        .container {
+          padding: 0 1rem;
+        }
+
+        .featured-posts__content {
+          grid-template-columns: 1fr;
+        }
+
+        .footer__data {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      /* For medium devices */
+      @media screen and (max-width: 768px) {
+        .nav__menu {
+          position: fixed;
+          top: -100%;
+          left: 0;
+          width: 100%;
+          background-color: white;
+          padding: 3rem 0;
+          box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+          transition: top 0.4s ease;
+        }
+
+        .nav__list {
+          flex-direction: column;
+          row-gap: 2rem;
+        }
+
+        .nav__toggle, .nav__close {
+          display: block;
+        }
+
+        .show-menu {
+          top: 4.5rem;
+        }
+
+        .blog-hero__title {
+          font-size: 2.5rem;
+        }
+
+        .newsletter__form {
+          flex-direction: column;
+        }
+
+        .newsletter__input {
+          width: 100%;
+        }
+      }
+
+      /* For small devices */
+      @media screen and (max-width: 576px) {
+        .blog-hero {
+          height: 400px;
+        }
+
+        .blog-hero__title {
+          font-size: 2rem;
+        }
+
+        .latest-posts__content {
+          grid-template-columns: 1fr;
+        }
+
+        .destination-guides__content {
+          grid-template-columns: 1fr;
+        }
+
+        .footer__data {
+          grid-template-columns: 1fr;
+        }
+      }
+   </style>
+</head>
+<body>
+   <!--==================== HEADER ====================-->
+   <header class="header" id="header">
+      <nav class="nav container">
+         <a href="index.html" class="nav__logo">
+             VoyageVista
+         </a>
+
+         <div class="nav__menu" id="nav-menu">
+             <ul class="nav__list">
+                 <li class="nav__item">
+                     <a href="index.html" class="nav__link">Home</a>
+                 </li>
+
+                 <li class="nav__item">
+                     <a href="about-us.html" class="nav__link">About</a>
+                 </li>
+
+                 <li class="nav__item">
+                     <a href="index.html#popular" class="nav__link">Popular</a>
+                 </li>
+
+                 <li class="nav__item">
+                     <a href="index.html#explore" class="nav__link">Explore</a>
+                 </li>
+             </ul>
+
+             <!-- Close button -->
+             <div class="nav__close" id="nav-close">
+                 <i class="ri-close-line"></i>
+             </div>
+         </div>
+
+         <!-- Toggle Button -->
+         <div class="nav__toggle" id="nav-toggle">
+             <i class="ri-menu-fill"></i>
+         </div>
+      </nav>
+   </header>
+
+   <!--==================== MAIN ====================-->
+   <main class="main">
+      <section class="blog-hero">
+         <div class="blog-hero__container container">
+            <h1 class="blog-hero__title">News & Blog</h1>
+            <p class="blog-hero__subtitle">Travel stories, tips, and destination guides to inspire your next adventure</p>
+         </div>
+      </section>
+
+      <section class="blog-filter section">
+         <div class="blog-filter__container container">
+            <div class="blog-filter__search">
+               <input type="text" placeholder="Search articles..." class="blog-filter__input">
+               <button class="blog-filter__button">
+                  <i class="ri-search-line"></i>
+               </button>
+            </div>
+
+            <div class="blog-filter__categories">
+               <button class="blog-filter__category active">All</button>
+               <button class="blog-filter__category">Destinations</button>
+               <button class="blog-filter__category">Travel Tips</button>
+               <button class="blog-filter__category">Adventure</button>
+               <button class="blog-filter__category">Culture</button>
+               <button class="blog-filter__category">Food</button>
+            </div>
+         </div>
+      </section>
+
+      <section class="featured-posts section">
+         <div class="featured-posts__container container">
+            <h2 class="section__title">Featured Posts</h2>
+            
+            <div class="featured-posts__content">
+               <article class="featured-posts__card">
+                  <div class="featured-posts__image">
+                     <img src="https://images.unsplash.com/photo-1530103862676-de8c9debad1d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Santorini, Greece" class="featured-posts__img">
+                     <span class="featured-posts__category">Destinations</span>
+                  </div>
+                  <div class="featured-posts__data">
+                     <h3 class="featured-posts__title">
+                        <a href="#">The Ultimate Guide to Santorini: Greece's Most Picturesque Island</a>
+                     </h3>
+                     <p class="featured-posts__description">
+                        Discover the white-washed buildings, blue domes, and stunning sunsets that make Santorini a must-visit destination.
+                     </p>
+                     <div class="featured-posts__footer">
+                        <div class="featured-posts__author">
+                           <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Author" class="featured-posts__author-img">
+                           <span class="featured-posts__author-name">Elena Papadopoulos</span>
+                        </div>
+                        <span class="featured-posts__date">June 15, 2023</span>
+                     </div>
+                  </div>
+               </article>
+
+               <article class="featured-posts__card">
+                  <div class="featured-posts__image">
+                     <img src="https://images.unsplash.com/photo-1492571350019-22de08371fd3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Kyoto, Japan" class="featured-posts__img">
+                     <span class="featured-posts__category">Culture</span>
+                  </div>
+                  <div class="featured-posts__data">
+                     <h3 class="featured-posts__title">
+                        <a href="#">Exploring Kyoto's Ancient Temples and Gardens</a>
+                     </h3>
+                     <p class="featured-posts__description">
+                        Walk through centuries of history as you visit Kyoto's most beautiful temples, shrines, and traditional gardens.
+                     </p>
+                     <div class="featured-posts__footer">
+                        <div class="featured-posts__author">
+                           <img src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Author" class="featured-posts__author-img">
+                           <span class="featured-posts__author-name">Takashi Yamamoto</span>
+                        </div>
+                        <span class="featured-posts__date">May 28, 2023</span>
+                     </div>
+                  </div>
+               </article>
+            </div>
+         </div>
+      </section>
+
+      <section class="latest-posts section">
+         <div class="latest-posts__container container">
+            <h2 class="section__title">Latest Articles</h2>
+            
+            <div class="latest-posts__content grid">
+               <article class="latest-posts__card">
+                  <div class="latest-posts__image">
+                     <img src="https://images.unsplash.com/photo-1518544866330-95a2bf8c7c5a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Bali, Indonesia" class="latest-posts__img">
+                     <span class="latest-posts__category">Destinations</span>
+                  </div>
+                  <div class="latest-posts__data">
+                     <h3 class="latest-posts__title">
+                        <a href="#">Bali on a Budget: How to Experience Paradise Without Breaking the Bank</a>
+                     </h3>
+                     <p class="latest-posts__description">
+                        Tips and tricks for enjoying Bali's beaches, temples, and culture while keeping costs low.
+                     </p>
+                     <div class="latest-posts__footer">
+                        <span class="latest-posts__date">
+                           <i class="ri-calendar-line"></i> June 10, 2023
+                        </span>
+                        <span class="latest-posts__comments">
+                           <i class="ri-chat-3-line"></i> 24 Comments
+                        </span>
+                     </div>
+                  </div>
+               </article>
+
+               <article class="latest-posts__card">
+                  <div class="latest-posts__image">
+                     <img src="https://images.unsplash.com/photo-1506197603052-3cc9c3a201bd?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Packing tips" class="latest-posts__img">
+                     <span class="latest-posts__category">Travel Tips</span>
+                  </div>
+                  <div class="latest-posts__data">
+                     <h3 class="latest-posts__title">
+                        <a href="#">The Art of Packing Light: Essential Tips for Every Traveler</a>
+                     </h3>
+                     <p class="latest-posts__description">
+                        Learn how to pack efficiently and travel with just a carry-on, no matter the length of your trip.
+                     </p>
+                     <div class="latest-posts__footer">
+                        <span class="latest-posts__date">
+                           <i class="ri-calendar-line"></i> June 5, 2023
+                        </span>
+                        <span class="latest-posts__comments">
+                           <i class="ri-chat-3-line"></i> 42 Comments
+                        </span>
+                     </div>
+                  </div>
+               </article>
+
+               <article class="latest-posts__card">
+                  <div class="latest-posts__image">
+                     <img src="https://images.unsplash.com/photo-1526397751294-331021109fbd?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Machu Picchu, Peru" class="latest-posts__img">
+                     <span class="latest-posts__category">Adventure</span>
+                  </div>
+                  <div class="latest-posts__data">
+                     <h3 class="latest-posts__title">
+                        <a href="#">Hiking the Inca Trail: A Journey to Machu Picchu</a>
+                     </h3>
+                     <p class="latest-posts__description">
+                        Everything you need to know about planning and experiencing this iconic trek through the Andes.
+                     </p>
+                     <div class="latest-posts__footer">
+                        <span class="latest-posts__date">
+                           <i class="ri-calendar-line"></i> May 30, 2023
+                        </span>
+                        <span class="latest-posts__comments">
+                           <i class="ri-chat-3-line"></i> 18 Comments
+                        </span>
+                     </div>
+                  </div>
+               </article>
+
+               <article class="latest-posts__card">
+                  <div class="latest-posts__image">
+                     <img src="https://images.unsplash.com/photo-1516100882582-96c3a05fe590?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Italian food" class="latest-posts__img">
+                     <span class="latest-posts__category">Food</span>
+                  </div>
+                  <div class="latest-posts__data">
+                     <h3 class="latest-posts__title">
+                        <a href="#">A Culinary Tour of Italy: Regional Specialties You Must Try</a>
+                     </h3>
+                     <p class="latest-posts__description">
+                        From Sicilian arancini to Venetian risotto, discover the diverse flavors of Italian cuisine.
+                     </p>
+                     <div class="latest-posts__footer">
+                        <span class="latest-posts__date">
+                           <i class="ri-calendar-line"></i> May 25, 2023
+                        </span>
+                        <span class="latest-posts__comments">
+                           <i class="ri-chat-3-line"></i> 31 Comments
+                        </span>
+                     </div>
+                  </div>
+               </article>
+
+               <article class="latest-posts__card">
+                  <div class="latest-posts__image">
+                     <img src="https://images.unsplash.com/photo-1509316785289-025f5b846b35?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="African safari" class="latest-posts__img">
+                     <span class="latest-posts__category">Adventure</span>
+                  </div>
+                  <div class="latest-posts__data">
+                     <h3 class="latest-posts__title">
+                        <a href="#">Safari Guide: Choosing the Right African Wildlife Experience</a>
+                     </h3>
+                     <p class="latest-posts__description">
+                        Compare different safari options across Kenya, Tanzania, South Africa, and Botswana.
+                     </p>
+                     <div class="latest-posts__footer">
+                        <span class="latest-posts__date">
+                           <i class="ri-calendar-line"></i> May 20, 2023
+                        </span>
+                        <span class="latest-posts__comments">
+                           <i class="ri-chat-3-line"></i> 27 Comments
+                        </span>
+                     </div>
+                  </div>
+               </article>
+
+               <article class="latest-posts__card">
+                  <div class="latest-posts__image">
+                     <img src="https://images.unsplash.com/photo-1503917988258-f87a78e3c995?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Sustainable travel" class="latest-posts__img">
+                     <span class="latest-posts__category">Travel Tips</span>
+                  </div>
+                  <div class="latest-posts__data">
+                     <h3 class="latest-posts__title">
+                        <a href="#">Sustainable Travel: How to Minimize Your Environmental Impact</a>
+                     </h3>
+                     <p class="latest-posts__description">
+                        Practical tips for eco-friendly travel, from reducing plastic waste to supporting local communities.
+                     </p>
+                     <div class="latest-posts__footer">
+                        <span class="latest-posts__date">
+                           <i class="ri-calendar-line"></i> May 15, 2023
+                        </span>
+                        <span class="latest-posts__comments">
+                           <i class="ri-chat-3-line"></i> 39 Comments
+                        </span>
+                     </div>
+                  </div>
+               </article>
+            </div>
+
+            <div class="latest-posts__pagination">
+               <button class="latest-posts__pagination-button active">1</button>
+               <button class="latest-posts__pagination-button">2</button>
+               <button class="latest-posts__pagination-button">3</button>
+               <button class="latest-posts__pagination-button">
+                  <i class="ri-arrow-right-s-line"></i>
+               </button>
+            </div>
+         </div>
+      </section>
+
+      <section class="destination-guides section">
+         <div class="destination-guides__container container">
+            <h2 class="section__title">Destination Guides</h2>
+            <p class="destination-guides__description">
+               Comprehensive travel guides to help you plan your perfect trip
+            </p>
+            
+            <div class="destination-guides__content grid">
+               <div class="destination-guides__card">
+                  <img src="https://images.unsplash.com/photo-1431274172761-fca41d930114?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Paris" class="destination-guides__img">
+                  <div class="destination-guides__data">
+                     <h3 class="destination-guides__title">Paris, France</h3>
+                     <p class="destination-guides__info">
+                        <i class="ri-information-line"></i> Complete guide with 45 attractions
+                     </p>
+                     <a href="#" class="destination-guides__button">
+                        View Guide <i class="ri-arrow-right-line"></i>
+                     </a>
+                  </div>
+               </div>
+
+               <div class="destination-guides__card">
+                  <img src="https://images.unsplash.com/photo-1492571350019-22de08371fd3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Tokyo" class="destination-guides__img">
+                  <div class="destination-guides__data">
+                     <h3 class="destination-guides__title">Tokyo, Japan</h3>
+                     <p class="destination-guides__info">
+                        <i class="ri-information-line"></i> Complete guide with 38 attractions
+                     </p>
+                     <a href="#" class="destination-guides__button">
+                        View Guide <i class="ri-arrow-right-line"></i>
+                     </a>
+                  </div>
+               </div>
+
+               <div class="destination-guides__card">
+                  <img src="https://images.unsplash.com/photo-1485871981521-5b1fd3805eee?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="New York City" class="destination-guides__img">
+                  <div class="destination-guides__data">
+                     <h3 class="destination-guides__title">New York City, USA</h3>
+                     <p class="destination-guides__info">
+                        <i class="ri-information-line"></i> Complete guide with 52 attractions
+                     </p>
+                     <a href="#" class="destination-guides__button">
+                        View Guide <i class="ri-arrow-right-line"></i>
+                     </a>
+                  </div>
+               </div>
+
+               <div class="destination-guides__card">
+                  <img src="https://images.unsplash.com/photo-1552832230-c0197dd311b5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Rome" class="destination-guides__img">
+                  <div class="destination-guides__data">
+                     <h3 class="destination-guides__title">Rome, Italy</h3>
+                     <p class="destination-guides__info">
+                        <i class="ri-information-line"></i> Complete guide with 40 attractions
+                     </p>
+                     <a href="#" class="destination-guides__button">
+                        View Guide <i class="ri-arrow-right-line"></i>
+                     </a>
+                  </div>
+               </div>
+            </div>
+
+            <a href="#" class="button destination-guides__more-button">
+               View All Guides <i class="ri-arrow-right-line"></i>
+            </a>
+         </div>
+      </section>
+
+      <section class="newsletter section">
+         <div class="newsletter__container container">
+            <div class="newsletter__content">
+               <h2 class="newsletter__title">Subscribe to Our Newsletter</h2>
+               <p class="newsletter__description">
+                  Get the latest travel tips, destination guides, and exclusive offers delivered straight to your inbox.
+               </p>
+               
+               <form action="#" class="newsletter__form">
+                  <input type="email" placeholder="Enter your email" class="newsletter__input">
+                  <button class="button newsletter__button">
+                     Subscribe <i class="ri-arrow-right-line"></i>
+                  </button>
+               </form>
+            </div>
+         </div>
+      </section>
+   </main>
+
+   <!--==================== FOOTER ====================-->
+   <footer class="footer">
+      <div class="footer__container container grid">
+         <div class="footer__content grid">
+             <div>
+                 <a href="#" class="footer__logo" style="font-family: cursive;">VoyageVista</a>
+
+                 <p class="footer__decsription">
+                     Travel with us and explore <br> 
+                     the world without limits.
+                 </p>
+             </div>
+
+             <div class="footer__data grid">
+                 <div>
+                     <h3 class="footer__title">About</h3>
+
+                     <ul class="footer__links">
+                         <li>
+                             <a href="about.html" class="footer__link">About Us</a>
+                         </li>
+                         <li>
+                             <a href="features.html" class="footer__link">Features</a>
+                         </li>
+                         <li>
+                             <a href="#" class="footer__link">News & Blog</a>
+                         </li>
+                     </ul>
+                 </div>
+
+                 <div>
+                     <h3 class="footer__title">Company</h3>
+
+                     <ul class="footer__links">
+                         <li>
+                             <a href="Companyfaqs.html" class="footer__link">FAQs</a>
+                         </li>
+                         <li>
+                             <a href="companyhistory.html" class="footer__link">History</a>
+                         </li>
+                         <li>
+                             <a href="COmpanytestimonials.html" class="footer__link">Testimonials</a>
+                         </li>
+                     </ul>
+                 </div>
+
+                 <div>
+                     <h3 class="footer__title">Contact</h3>
+
+                     <ul class="footer__links">
+                         <li>
+                             <a href="Contactpage.html" class="footer__link">Call Center</a>
+                         </li>
+                         <li>
+                             <a href="Contactpage.html" class="footer__link">Support Center</a>
+                         </li>
+                         <li>
+                             <a href="Contactpage.html" class="footer__link">Contact Us</a>
+                         </li>
+                     </ul>
+                 </div>
+
+                 <div>
+                     <h3 class="footer__title">Support</h3>
+
+                     <ul class="footer__links">
+                         <li>
+                             <a href="supportpageeeee.html" class="footer__link">Privacy Policy</a>
+                         </li>
+                         <li>
+                             <a href="supportpageeeee.html" class="footer__link">Terms & Services</a>
+                         </li>
+                         <li>
+                             <a href="supportpageeeee.html" class="footer__link">Payments</a>
+                         </li>
+                     </ul>
+                 </div>
+             </div>
+         </div>
+
+         <div class="footer__group">
+             <div class="footer__social">
+                 <a href="https://www.facebook.com/" target="_blank" class="footer__social-link">
+                     <i class="ri-facebook-line"></i>
+                 </a>
+                 <a href="https://www.instagram.com/" target="_blank" class="footer__social-link">
+                     <i class="ri-instagram-line"></i>
+                 </a>
+                 <a href="https://twitter.com/" target="_blank" class="footer__social-link">
+                     <i class="ri-twitter-line"></i>
+                 </a>
+                 <a href="https://www.youtube.com/" target="_blank" class="footer__social-link">
+                     <i class="ri-youtube-line"></i>
+                 </a>
+             </div>
+
+             <span class="footer__copy">
+                 &#169; Copyright Voyage Vista. All rights reserved
+             </span>
+         </div>
+      </div>
+   </footer>
+
+   <!--========== SCROLL UP ==========-->
+   <a href="#" class="scrollup" id="scroll-up">
+     <i class="ri-arrow-up-line"></i>
+   </a>
+
+   <!--=============== MAIN JS ===============-->
+   <script>
+      // Show scroll up button when scrolling down
+      const scrollUp = () => {
+        const scrollUp = document.getElementById('scroll-up')
+        this.scrollY >= 350 ? scrollUp.classList.add('show-scroll')
+                            : scrollUp.classList.remove('show-scroll')
+      }
+      window.addEventListener('scroll', scrollUp)
+
+      // Show/hide mobile menu
+      const navMenu = document.getElementById('nav-menu'),
+            navToggle = document.getElementById('nav-toggle'),
+            navClose = document.getElementById('nav-close')
+
+      if(navToggle) {
+        navToggle.addEventListener('click', () => {
+          navMenu.classList.add('show-menu')
+        })
+      }
+
+      if(navClose) {
+        navClose.addEventListener('click', () => {
+          navMenu.classList.remove('show-menu')
+        })
+      }
+
+      // Change background header on scroll
+      const scrollHeader = () => {
+        const header = document.getElementById('header')
+        this.scrollY >= 50 ? header.classList.add('scroll-header') 
+                           : header.classList.remove('scroll-header')
+      }
+      window.addEventListener('scroll', scrollHeader)
+   </script>
+</body>
+</html>
